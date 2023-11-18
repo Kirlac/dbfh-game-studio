@@ -28,10 +28,7 @@
 </script>
 
 {#if page === 'player'}
-	<Player value={gameString}></Player>
-	<nav>
-		<button on:click={() => (page = 'editor')}>Edit</button>
-	</nav>
+	<Player value={gameString} on:close={() => (page = 'editor')}></Player>
 {:else}
 	{#if editorVisible}
 		<Editor bind:value={gameString}></Editor>
