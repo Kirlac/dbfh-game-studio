@@ -1,5 +1,5 @@
 <header class="text-center">
-	<img src="logo-trans-200.png" alt="Desert Bus for Hope" class="inline-block" />
+	<img src="logo-2024-trans-200.png" alt="Desert Bus for Hope" class="inline-block" />
 	<br />
 	<h1 class="m-4 inline-block text-4xl">The Desert Bus <s>2023</s> 2024 Quiz Builder</h1>
 </header>
