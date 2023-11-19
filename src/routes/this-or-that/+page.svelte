@@ -34,20 +34,15 @@
 		<Editor bind:value={gameString}></Editor>
 	{/if}
 	<label for="gameString"><h4>Game string</h4></label>
-	<textarea id="gameString" bind:value={gameString} placeholder={placeholderText}></textarea>
-	<nav>
+	<textarea
+		id="gameString"
+		bind:value={gameString}
+		placeholder={placeholderText}
+		class="p2 w-80 resize-none rounded-md ring-1 ring-slate-900/10"
+	></textarea>
+	<nav class="w-full border-b bg-white md:static md:border-0">
 		<button on:click={copyJsonString}>Copy game string</button>
 		<button on:click={toggleEditor}>{editorVisible ? 'Hide' : 'Show'} Editor</button>
 		<button on:click={() => (page = 'player')}>Play game</button>
 	</nav>
 {/if}
-
-<style>
-	#gameString {
-		display: block;
-	}
-
-	nav {
-		padding-top: 8px;
-	}
-</style>
