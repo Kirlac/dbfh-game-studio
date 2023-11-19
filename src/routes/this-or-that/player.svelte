@@ -2,9 +2,11 @@
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { showNav } from '../showNav.store';
+	import type { GameData } from '$lib/gameData';
 
-	// Declare json value object representing our game
-	export let value = '';
+	// Declare json object representing our game
+	export let value: GameData;
+	$: displayValue = JSON.stringify(value, null, 2);
 
 	// Create event dispatcher for communicating with parent
 	const dispatch = createEventDispatcher();
@@ -54,7 +56,7 @@
 </script>
 
 <h2>Player</h2>
-<pre>{value}</pre>
+<pre>{displayValue}</pre>
 
 {#if escapePressed}
 	<overlay out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
