@@ -2,5 +2,5 @@
 	export let value = '';
 </script>
 
-<h1>Editor</h1>
+<h2>Editor</h2>
 <code>{value}</code>

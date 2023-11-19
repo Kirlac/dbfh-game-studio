@@ -16,6 +16,6 @@
 	document.addEventListener('keyup', handleKeyPress);
 </script>
 
-<h1>Player</h1>
-<p>Press ctrl + escape to return to editor</p>
-<code>{value}</code>
+<h2>Player</h2>
+<p>Press <code>ctrl</code> + <code>escape</code> to return to editor</p>
+<pre>{value}</pre>
