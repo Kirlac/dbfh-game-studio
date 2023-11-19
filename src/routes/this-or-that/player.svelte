@@ -54,40 +54,16 @@
 </script>
 
 <h2>Player</h2>
-<pre>{value}</pre>
+<pre class="font-mono">{value}</pre>
 
 {#if escapePressed}
-	<overlay out:fade>
-		<h2>Press <code>ESC</code> key to return to editor</h2>
+	<overlay out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
+		<h2
+			class="relative m-12 inline-block rounded-md bg-slate-900/50 p-2 text-center font-sans text-4xl text-slate-100"
+		>
+			Press <key class="rounded bg-slate-200/40 px-2 shadow ring-1 ring-slate-900/10"
+				><code>Esc</code></key
+			> key to return to editor
+		</h2>
 	</overlay>
 {/if}
-
-<style>
-	overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		/* background-color: #000a; */
-		display: flex;
-		align-items: flex-end;
-		justify-content: center;
-	}
-
-	overlay h2 {
-		color: #eee;
-		background-color: #000a;
-		font-size: 32px;
-		text-align: center;
-		display: inline-block;
-		position: relative;
-		padding: 8px;
-		border-radius: 4px;
-	}
-
-	code,
-	pre {
-		font-family: 'Courier New', Courier, monospace;
-	}
-</style>
