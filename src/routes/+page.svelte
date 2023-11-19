@@ -10,11 +10,11 @@
 	<p>Paste your gameplay code in the box below then click start.</p>
 	<br />
 	<textarea
-		class="h-32 w-3/4 resize-none rounded-md p-2 ring-1 ring-slate-900/10"
+		class="m-2 h-32 w-3/4 resize-none rounded-md p-2 ring-1 ring-slate-900/10"
 		placeholder="Paste your gameplay code here then click start"
 	></textarea>
 	<br />
-	<button class="rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-900/10"> Start </button>
+	<button class="m-2 rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-900/10"> Start </button>
 </section>
 
 <section class="text-center">
