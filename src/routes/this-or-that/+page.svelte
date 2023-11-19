@@ -38,7 +38,7 @@
 		id="gameString"
 		bind:value={gameString}
 		placeholder={placeholderText}
-		class="p2 w-80 resize-none rounded-md ring-1 ring-slate-900/10"
+		class="w-80 resize-none rounded-md p-2 ring-1 ring-slate-900/10"
 	></textarea>
 	<nav class="w-full border-b bg-white md:static md:border-0">
 		<button on:click={copyJsonString}>Copy game string</button>
