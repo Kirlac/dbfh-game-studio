@@ -54,7 +54,7 @@
 </script>
 
 <h2>Player</h2>
-<pre class="font-mono">{value}</pre>
+<pre>{value}</pre>
 
 {#if escapePressed}
 	<overlay out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
