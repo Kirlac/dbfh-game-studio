@@ -1,48 +1,35 @@
 <script lang="ts">
-	import type { GameData } from '$lib/gameData';
-	import Player from './player.svelte';
+	import { stringToBase64 } from '$lib/Base64Encoder';
+	import type { GameData } from '$lib/gameData.store';
+	import GameCode from '$lib/GameCode.svelte';
 
-	let mode: 'edit' | 'play' = 'edit';
-	let gameData: GameData = { gameType: 'thisOrThat', title: {}, questions: [], end: {} };
-	$: gameString = JSON.stringify(gameData, null, 2);
+	const defaultGameData: GameData = {
+		gameType: 'thisOrThat',
+		titleCard: {},
+		questions: [],
+		endCard: {}
+	};
 
-	let placeholderText = "{ 'json': 'example' }";
+	let gameData = defaultGameData;
+	$: gameDataJson = JSON.stringify(gameData);
+	$: gameDataBase64 = stringToBase64(gameDataJson);
 
-	function copyJsonString() {
-		const type = 'text/plain';
-		const blob = new Blob([gameString], { type });
-		const data = [new ClipboardItem({ [type]: blob })];
-
-		navigator.clipboard.write(data).then(
-			() => {
-				/* success */
-			},
-			() => {
-				/* failure */
-			}
-		);
+	async function loadExample() {
+		const exampleResponse = await fetch('this-or-that-example.json');
+		gameData = await exampleResponse.json();
 	}
 </script>
 
-{#if mode === 'play'}
-	<Player value={gameData} on:close={() => (mode = 'edit')}></Player>
-{:else}
-	<h2>Editor</h2>
+<section class="mx-2 mt-14">
+	<!-- Editor -->
+	<button
+		class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+		on:click={loadExample}
+	>
+		<box-icon name="book"></box-icon> Load Example
+	</button>
+</section>
 
-	<section>
-		<button
-			class="m-2 rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-900/10"
-			on:click={copyJsonString}>Copy game string</button
-		>
-		<button
-			class="m-2 rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-900/10"
-			on:click={() => (mode = 'play')}>Play game</button
-		>
-	</section>
-	<textarea
-		id="gameString"
-		bind:value={gameString}
-		placeholder={placeholderText}
-		class="m-2 h-64 w-3/4 resize-none rounded-md p-2 ring-1 ring-slate-900/10"
-	></textarea>
-{/if}
+<section class="mx-4">
+	<GameCode bind:value={gameDataBase64} showPlayButton showCopyButton></GameCode>
+</section>
