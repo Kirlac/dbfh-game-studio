@@ -22,13 +22,28 @@
 			</a>
 		</home>
 		<ul class="flex w-1/2 items-center justify-evenly">
-			<li class="inline-block"><a href="this-or-that">This or That</a></li>
-			<li class="inline-block"><a href="only-connect">Only Connect</a></li>
-			<li class="inline-block"><a href="millionaire">Who Wants to be a Millionaire</a></li>
-			<li class="inline-block"><a href="guess-the-thing">Guess the Thing</a></li>
+			<li class="inline-block">
+				<a class="rounded-md px-4 py-2 hover:bg-slate-900/10" href="this-or-that">This or That</a>
+			</li>
+			<li class="inline-block">
+				<a class="rounded-md px-4 py-2 hover:bg-slate-900/10" href="only-connect">Only Connect</a>
+			</li>
+			<li class="inline-block">
+				<a class="rounded-md px-4 py-2 hover:bg-slate-900/10" href="millionaire"
+					>Who Wants to be a Millionaire</a
+				>
+			</li>
+			<li class="inline-block">
+				<a class="rounded-md px-4 py-2 hover:bg-slate-900/10" href="guess-the-thing"
+					>Guess the Thing</a
+				>
+			</li>
 		</ul>
 		<help class="flex items-center text-right">
-			<button class="mx-2 h-12 w-12 rounded-full text-center ring-1 ring-slate-900/10">?</button>
+			<button class="mx-2 flex h-12 w-12 items-center justify-center rounded-full">
+				<box-icon type="solid" name="help-circle" class="h-10 w-10 opacity-25 hover:opacity-50"
+				></box-icon>
+			</button>
 		</help>
 	</nav>
 {/if}
