@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { showNav } from '../showNav.store';
-	import type { GameData } from '$lib/gameData';
+	import type { GameData } from '$lib/gameData.store';
 
 	// Declare json object representing our game
 	export let value: GameData;
@@ -61,9 +60,9 @@
 {#if escapePressed}
 	<overlay out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
 		<h2
-			class="relative m-12 inline-block rounded-md bg-slate-900/50 p-2 text-center font-sans text-4xl text-slate-100"
+			class="relative m-12 inline-block rounded-md bg-stone-900/50 p-2 text-center font-sans text-4xl text-stone-100"
 		>
-			Press <key class="rounded bg-slate-200/40 px-2 shadow ring-1 ring-slate-900/10"
+			Press <key class="rounded bg-stone-200/40 px-2 shadow ring-1 ring-stone-900/10"
 				><code>Esc</code></key
 			> key to return to editor
 		</h2>
