@@ -25,7 +25,7 @@
 	{/if}
 </section>
 
-<section class="mx-auto w-1/2 rounded-md bg-slate-900/10 p-4 text-left ring-1 ring-slate-900/10">
+<section class="mx-auto w-1/2 rounded-md bg-stone-900/10 p-4 text-left ring-1 ring-stone-900/10">
 	<p>Status code: {$page.status}</p>
 	<br />
 	{#if $page?.error?.message}
@@ -34,7 +34,7 @@
 	{/if}
 	<p>
 		<button
-			class="rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-900/10"
+			class="rounded-md p-2 ring-1 ring-stone-900/10 hover:bg-stone-900/10"
 			on:click={toggleDetails}
 		>
 			{detailsVisible ? 'Hide' : 'Show'} error details
