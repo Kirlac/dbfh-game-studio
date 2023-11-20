@@ -1,7 +1,13 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import '../app.css';
 	import { showNav } from './showNav.store';
 	$showNav = true;
+
+	onMount(async () => {
+		// Import boxicons in onMount because it needs to reference 'window'
+		await import('boxicons');
+	});
 </script>
 
 {#if $showNav}
