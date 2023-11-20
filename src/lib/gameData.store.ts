@@ -1,3 +1,7 @@
+import { writable } from 'svelte/store';
+
+export const gameData = writable<GameData>();
+
 export type GameData = {
 	// Flag to determine the type of game to load when pasted in to the home page
 	gameType: 'thisOrThat' | 'onlyConnect' | 'millionaire' | 'guessTheThing';
