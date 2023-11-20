@@ -33,7 +33,6 @@
 			} else {
 				// raise close player event
 				dispatch('close');
-				$showNav = true;
 				document.removeEventListener('keyup', handleKeyPress);
 			}
 		}
@@ -46,7 +45,6 @@
 
 	// Mounting logic
 	onMount(() => {
-		$showNav = false;
 		// Bind keyup event listener
 		document.addEventListener('keyup', handleKeyPress);
 		// Flash close confirmation message on load so user knows how to exit
