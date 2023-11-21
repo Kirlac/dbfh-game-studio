@@ -2,7 +2,7 @@
 	import { stringToBase64 } from '$lib/Base64Encoder';
 	import type { GameData } from '$lib/gameData.store';
 	import GameCode from '$lib/GameCode.svelte';
-	import BoxIcon from '$lib/BoxIcon.svelte';
+	import Icon from '$lib/Icon.svelte';
 
 	const defaultGameData: GameData = {
 		gameType: 'thisOrThat',
@@ -21,14 +21,14 @@
 	}
 </script>
 
-<main class="mx-4 mt-14">
+<main class="mx-4 mt-16">
 	<!-- Editor -->
 	<form class="-ml-2">
 		<button
 			class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
 			on:click={loadExample}
 		>
-			<BoxIcon name="book"></BoxIcon> Load Example
+			<Icon name="book" class="mx-2"></Icon> Load Example
 		</button>
 	</form>
 
