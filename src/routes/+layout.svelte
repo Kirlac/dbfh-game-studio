@@ -3,8 +3,6 @@
 	import { page } from '$app/stores';
 	import '../app.css';
 
-	export let data: { route: any };
-
 	$: isPlayer = $page?.route?.id === '/play';
 </script>
 
