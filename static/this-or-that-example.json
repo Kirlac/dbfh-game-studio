@@ -1,8 +1,8 @@
 {
 	"gameType": "thisOrThat",
 	"titleCard": {
-		"quizTitle": "Crab or No Crab",
-		"quizDescription": "For each image, guess whether or not it is a crab",
+		"gameTitle": "Crab or No Crab",
+		"gameDescription": "For each image, guess whether or not it is a crab",
 		"titleImage": null
 	},
 	"questions": [

@@ -8,7 +8,7 @@
 
 <header class="flex flex-col items-center justify-around text-center">
 	<img src="logo-2024-trans-200.png" alt="Desert Bus for Hope" class="inline-block w-[200px]" />
-	<h1 class="m-4 inline-block text-4xl">The Desert Bus Quiz Builder</h1>
+	<h1 class="m-4 inline-block text-4xl">The Desert Bus for Hope Game Studio</h1>
 </header>
 
 <main class="text-center">

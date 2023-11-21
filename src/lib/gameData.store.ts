@@ -14,10 +14,10 @@ export type GameData = {
 };
 
 export interface TitleCard {
-	// Quiz name for the title card eg. 'Crab or No Crab'
-	quizTitle?: string;
+	// Game name for the title card eg. 'Crab or No Crab'
+	gameTitle?: string;
 	// Descriptive text for the title card eg. 'For each image, guess whether or not it is a crab'
-	quizDescription?: string;
+	gameDescription?: string;
 	//Base64 image to show on the title card
 	titleImage?: string;
 }
