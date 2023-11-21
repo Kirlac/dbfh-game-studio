@@ -6,6 +6,7 @@
 	font-family: 'Cascadia Code';
 	src: url('fonts/CascadiaCode-2111.01/woff2/CascadiaCode.woff2');
 }
+kbd,
 code,
 pre {
 	font-family: 'Cascadia Code';

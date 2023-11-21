@@ -58,11 +58,11 @@
 {#if escapePressed}
 	<overlay out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
 		<h2
-			class="relative m-12 inline-block rounded-md bg-stone-900/50 p-2 text-center font-sans text-4xl text-stone-100"
+			class="relative m-12 inline-block rounded-md bg-stone-500 p-2 text-center font-sans text-4xl text-stone-100"
 		>
-			Press <key class="rounded bg-stone-200/40 px-2 shadow ring-1 ring-stone-900/10"
-				><code>Esc</code></key
-			> key to return to editor
+			Press <kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
+				>Esc</kbd
+			> key twice to return to editor
 		</h2>
 	</overlay>
 {/if}
