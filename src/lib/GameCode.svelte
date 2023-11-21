@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { fade } from 'svelte/transition';
+	import BoxIcon from './BoxIcon.svelte';
 
 	export let value: string;
 	export let showEditButton = false;
@@ -62,7 +63,7 @@
 					class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={playGame}
 				>
-					<box-icon name="play"></box-icon> Play
+					<BoxIcon name="play"></BoxIcon> Play
 				</button>
 			{/if}
 			{#if showEditButton}
@@ -70,7 +71,7 @@
 					class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={editGame}
 				>
-					<box-icon type="solid" name="edit"></box-icon> Edit
+					<BoxIcon name="edit" type="solid"></BoxIcon> Edit
 				</button>
 			{/if}
 			{#if showCopyButton}
@@ -78,7 +79,7 @@
 					class="hover:bg-stone2400 m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10"
 					on:click={copyGameCode}
 				>
-					<box-icon name="clipboard"></box-icon> Copy
+					<BoxIcon name="clipboard"></BoxIcon> Copy
 				</button>
 			{/if}
 		</section>
