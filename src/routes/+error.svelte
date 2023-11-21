@@ -9,28 +9,24 @@
 </script>
 
 <header class="text-center">
-	<h1 class="m-4 inline-block text-4xl">There was an error</h1>
+	<h1 class="m-4 text-4xl">There was an error</h1>
+	{#if $page.status === 404}
+		<h2 class="m-4 text-2xl">Page does not exist</h2>
+		<p class="m-4">
+			Please check the URL and try again. If you're sure the page should exist, please file a bug
+			report.
+		</p>
+	{:else}
+		<h2 class="m-4 text-2xl">An unexpected error occurred</h2>
+		<p class="m-4">Please try again. If the issue persists, please file a bug report.</p>
+	{/if}
+	<p class="m-4">Check the below details for more information.</p>
 </header>
 
-<section class="text-center">
-	{#if $page.status === 404}
-		<h2 class="m-4 inline-block text-2xl">Page does not exist</h2>
-		<br />
-		<h3 class="m-4 inline-block text-xl">Please check the URL and try again</h3>
-		<br />
-		<h4 class="m-4 inline-block text-lg">
-			If you're sure the page should exist, please file a bug report
-		</h4>
-		<br />
-	{/if}
-</section>
-
-<section class="mx-auto w-1/2 rounded-md bg-stone-900/10 p-4 text-left ring-1 ring-stone-900/10">
+<main class="mx-auto w-1/2 rounded-md bg-stone-900/10 p-4 text-left ring-1 ring-stone-900/10">
 	<p>Status code: {$page.status}</p>
-	<br />
 	{#if $page?.error?.message}
 		<p>Message: {$page?.error?.message}</p>
-		<br />
 	{/if}
 	<p>
 		<button
@@ -41,7 +37,6 @@
 		</button>
 	</p>
 	{#if detailsVisible}
-		<br />
 		<pre class="">{JSON.stringify($page, null, 2)}</pre>
 	{/if}
-</section>
+</main>

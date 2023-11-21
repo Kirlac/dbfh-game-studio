@@ -10,10 +10,9 @@
 	}
 </script>
 
-<section>
-	<h3>Image to base64 converter test</h3>
+<form>
 	<input type="file" on:change={loadImage} />
 	<pre class="whitespace-break-spaces break-words">
 			{imageBase64}
 		</pre>
-</section>
+</form>

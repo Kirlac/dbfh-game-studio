@@ -54,35 +54,41 @@
 </script>
 
 <section
-	class="relative inline-block h-64 w-3/4 rounded-md bg-stone-900/10 text-left ring-1 ring-stone-900/10"
+	class="relative inline-block h-64 w-3/4 rounded-md bg-stone-300 text-left ring-1 ring-stone-900/10"
 >
 	{#if value && (showPlayButton || showEditButton || showCopyButton)}
-		<section class="absolute right-0 top-0 flex justify-around">
+		<menu class="absolute right-0 top-0 flex justify-around">
 			{#if showPlayButton}
-				<button
-					class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-					on:click={playGame}
-				>
-					<BoxIcon name="play"></BoxIcon> Play
-				</button>
+				<li>
+					<button
+						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={playGame}
+					>
+						<BoxIcon name="play"></BoxIcon> Play
+					</button>
+				</li>
 			{/if}
 			{#if showEditButton}
-				<button
-					class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-					on:click={editGame}
-				>
-					<BoxIcon name="edit" type="solid"></BoxIcon> Edit
-				</button>
+				<li>
+					<button
+						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={editGame}
+					>
+						<BoxIcon name="edit" type="solid"></BoxIcon> Edit
+					</button>
+				</li>
 			{/if}
 			{#if showCopyButton}
-				<button
-					class="hover:bg-stone2400 m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10"
-					on:click={copyGameCode}
-				>
-					<BoxIcon name="clipboard"></BoxIcon> Copy
-				</button>
+				<li>
+					<button
+						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={copyGameCode}
+					>
+						<BoxIcon name="clipboard"></BoxIcon> Copy
+					</button>
+				</li>
 			{/if}
-		</section>
+		</menu>
 	{/if}
 
 	<pre
@@ -93,7 +99,7 @@
 			: ''}"></pre>
 
 	{#if copyStatusVisible}
-		<overlay transition:fade class="absolute right-0 top-14">
+		<div transition:fade class="absolute right-0 top-14">
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
 					? 'bg-green-600/60'
@@ -101,7 +107,7 @@
 			>
 				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
-		</overlay>
+		</div>
 	{/if}
 </section>
 

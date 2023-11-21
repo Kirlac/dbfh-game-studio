@@ -21,16 +21,16 @@
 	}
 </script>
 
-<section class="mx-2 mt-14">
+<main class="mx-4 mt-14">
 	<!-- Editor -->
-	<button
-		class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-		on:click={loadExample}
-	>
-		<BoxIcon name="book"></BoxIcon> Load Example
-	</button>
-</section>
+	<form class="-ml-2">
+		<button
+			class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+			on:click={loadExample}
+		>
+			<BoxIcon name="book"></BoxIcon> Load Example
+		</button>
+	</form>
 
-<section class="mx-4">
 	<GameCode bind:value={gameDataBase64} showPlayButton showCopyButton></GameCode>
-</section>
+</main>
