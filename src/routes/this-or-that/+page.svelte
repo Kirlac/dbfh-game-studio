@@ -25,10 +25,10 @@
 	<!-- Editor -->
 	<form class="-ml-2">
 		<button
-			class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+			class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 			on:click={loadExample}
 		>
-			<Icon name="book" class="mx-2"></Icon> Load Example
+			<Icon name="book" class="text-dbfh-text mx-2"></Icon> Load Example
 		</button>
 	</form>
 

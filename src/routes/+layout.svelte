@@ -36,19 +36,22 @@
 </svelte:head>
 
 {#if !isPlayer}
-	<a class="fixed left-0 top-0 m-2 h-12 w-12 rounded-md hover:bg-stone-200" href="/">
-		<Icon name="bus" class="h-full w-full text-stone-400 hover:text-stone-600"></Icon>
+	<a
+		class="hover:bg-dbfh-accent text-dbfh-accent fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent hover:text-white"
+		href="/"
+	>
+		<Icon name="bus" class="text-4xl"></Icon>
 	</a>
 
 	<button
-		class="fixed right-0 top-0 m-2 h-12 w-12 rounded-full hover:bg-stone-200"
+		class="hover:bg-dbfh-accent text-dbfh-accent fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent hover:text-white"
 		on:click={openInfoCentre}
 	>
-		<Icon name="circle-info" class="h-full w-full text-stone-400 hover:text-stone-600"></Icon>
+		<Icon name="circle-info" class="text-4xl"></Icon>
 	</button>
 {/if}
 
-<dialog bind:this={infoCentre}>
+<dialog bind:this={infoCentre} class="rounded-md">
 	<InfoCentre on:close={closeInfoCentre}></InfoCentre>
 </dialog>
 

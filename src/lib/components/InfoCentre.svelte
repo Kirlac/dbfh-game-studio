@@ -53,46 +53,69 @@
 
 <section class="p-4">
 	<button
-		class="absolute right-0 top-0 m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+		class="absolute right-0 top-0 m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 		on:click={closeInfoCentre}
 	>
-		<Icon name="circle-xmark"></Icon>
+		<Icon name="circle-xmark" class="text-dbfh-text"></Icon>
 	</button>
-	<h1>The Desert Bus for Hope Game Studio Info Centre</h1>
-	<h2>Example game codes</h2>
-	<p>Click one of the buttons below to get an example game code you can try out.</p>
+	<h1 class="text-dbfh-headlight text-center text-2xl">
+		The Desert Bus for Hope Game Studio Info Centre
+	</h1>
+	<h2 class="text-dbfh-headlight my-2 text-xl">Example game codes</h2>
+	<p class="text-dbfh-text">
+		Click one of the buttons below to get an example game code you can try out.
+	</p>
+	<h3 class="text-dbfh-headlight text-lg">This or That</h3>
 	<menu>
 		<li>
 			<button
-				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+				class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 				on:click={() => copyExampleGameCode('this-or-that')}
 			>
-				<Icon name="clipboard" class="mx-2"></Icon> Copy example This or That code
+				<Icon name="clipboard" class="text-dbfh-text mx-2"></Icon> Copy example This or That code
 			</button>
 		</li>
 		<li>
 			<button
-				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+				class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 				on:click={() => copyExampleGameCode('this-or-that')}
 			>
-				<Icon name="floppy-disk" class="mx-2"></Icon> Download example This or That file
+				<Icon name="floppy-disk" class="text-dbfh-text mx-2"></Icon> Download example This or That file
 			</button>
 		</li>
 	</menu>
-	<h2>Settings</h2>
-	<menu>
-		<li>
-			<button
-				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-				on:click={toggleFancyCode}
-			>
-				<Icon name={$userConfig.fancyCodeEnabled ? 'pen' : 'pen-fancy'} class="mx-2"></Icon>
-				{$userConfig.fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
-			</button>
-		</li>
-	</menu>
-	<h2>Keyboard shortcuts</h2>
-	<p>
+	<h3 class="text-dbfh-headlight text-lg">Only Connect</h3>
+	<p class="text-dbfh-text">Coming soon...</p>
+	<h3 class="text-dbfh-headlight text-lg">Who Wants to be a Millionaire</h3>
+	<p class="text-dbfh-text">Coming soon...</p>
+	<h3 class="text-dbfh-headlight text-lg">Guess the Thing</h3>
+	<p class="text-dbfh-text">Coming soon...</p>
+	<h2 class="text-dbfh-headlight my-2 text-xl">Settings</h2>
+	<table class="w-full">
+		<tr>
+			<td>
+				<button
+					class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+					on:click={toggleFancyCode}
+				>
+					<Icon
+						name={$userConfig.fancyCodeEnabled ? 'pen' : 'pen-fancy'}
+						class="text-dbfh-text mx-2"
+					></Icon>
+					{$userConfig.fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
+				</button>
+			</td>
+			<td>
+				<code
+					>Code blocks will be displayed in a {$userConfig.fancyCodeEnabled
+						? 'fancy cursive'
+						: 'regular'} font style</code
+				>
+			</td>
+		</tr>
+	</table>
+	<h2 class="text-dbfh-headlight my-2 text-xl">Keyboard shortcuts</h2>
+	<p class="text-dbfh-text">
 		Currently none, except for the one to close the player. More will be added when I set up a
 		global keypress listener.
 	</p>
@@ -103,49 +126,47 @@
 		</tr>
 		<tr>
 			<td class="border p-2"
-				><kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
+				><kbd class="rounded bg-slate-200 px-2 text-slate-600 shadow-md ring-1 ring-slate-900/10"
 					>Esc</kbd
 				></td
 			>
 			<td class="border p-2">Press twice to close the player and return to the editor</td>
 		</tr>
 	</table>
-	<h2>Support</h2>
-	<p>
-		Issues, suggestions and feature requests can be provided via the GitHib repo. Or I can be
-		contacted directly via the LRR Discord or Mastodon.
+	<h2 class="text-dbfh-headlight my-2 text-xl">Contact</h2>
+	<p class="text-dbfh-text">
+		Issues, suggestions and feature requests can be provided via the GitHib repo. Alternatively I
+		can be contacted directly via Mastodon or you can @ me on the LRR Discord.
 	</p>
 	<ul class="m-2 flex items-center justify-center">
 		<li>
-			<div class="m-2 flex items-center justify-center">
-				<Icon name="discord" class="mx-4"></Icon> @Kirlac
-			</div>
-		</li>
-		<li>
 			<a
-				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-				href="https://mastodon.social/@kirlac@kind.social"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				<Icon name="mastodon" class="mx-4"></Icon> @kirlac@kind.social <Icon
-					name="up-right-from-square"
-					class="mx-2 h-2 w-2"
-				></Icon>
-			</a>
-		</li>
-		<li>
-			<a
-				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+				class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 				href="https://github.com/Kirlac/dbfh-game-studio"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
-				<Icon name="github" class="mx-4"></Icon> Kirlac/dbfh-game-studio <Icon
-					name="up-right-from-square"
-					class="mx-2 h-2 w-2"
-				></Icon>
+				<Icon name="github" class="fa-xl text-dbfh-text"></Icon><span class="mx-2"
+					>Kirlac/dbfh-game-studio</span
+				><Icon name="up-right-from-square" class="fa-xs"></Icon>
 			</a>
+		</li>
+		<li>
+			<a
+				class="text-dbfh-headlight m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+				href="https://mastodon.social/@kirlac@kind.social"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<Icon name="mastodon" class="fa-xl text-dbfh-text"></Icon><span class="mx-2"
+					>@kirlac@kind.social</span
+				><Icon name="up-right-from-square" class="fa-xs"></Icon>
+			</a>
+		</li>
+		<li>
+			<div class="text-dbfh-text m-2 flex items-center justify-center">
+				<Icon name="discord" class="fa-xl"></Icon><span class="mx-2">@Kirlac</span>
+			</div>
 		</li>
 	</ul>
 	{#if copyStatusVisible}
@@ -153,7 +174,7 @@
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
 					? 'bg-green-600/60'
-					: 'bg-red-600/60'} p-2 text-center text-stone-100"
+					: 'bg-red-600/60'} p-2 text-center text-slate-100"
 			>
 				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>

@@ -55,14 +55,14 @@
 </script>
 
 <section
-	class="relative inline-block h-64 w-3/4 rounded-md bg-stone-300 text-left ring-1 ring-stone-900/10"
+	class="relative inline-block h-64 w-3/4 rounded-md bg-slate-50 text-left ring-1 ring-slate-900/10 hover:bg-slate-200 focus:bg-slate-200"
 >
 	{#if value && (showPlayButton || showEditButton || showCopyButton)}
 		<menu class="absolute right-0 top-0 flex justify-around">
 			{#if showPlayButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={playGame}
 					>
 						<Icon name="play" class="mx-2"></Icon> Play
@@ -72,7 +72,7 @@
 			{#if showEditButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={editGame}
 					>
 						<Icon name="pen-to-square" class="mx-2"></Icon> Edit
@@ -82,7 +82,7 @@
 			{#if showCopyButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={copyGameCode}
 					>
 						<Icon name="clipboard" class="mx-2"></Icon> Copy
@@ -96,8 +96,8 @@
 		contenteditable="true"
 		bind:innerText={value}
 		class="h-full w-full overflow-scroll whitespace-break-spaces break-all p-2 {!value
-			? 'placeholder text-stone-900/40'
-			: ''}"
+			? 'placeholder text-slate-900/40'
+			: 'text-dbfh-text'}"
 		data-placeholder-text={placeholderText}></pre>
 
 	{#if copyStatusVisible}
@@ -105,7 +105,7 @@
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
 					? 'bg-green-600/60'
-					: 'bg-red-600/60'} p-2 text-center text-stone-100"
+					: 'bg-red-600/60'} p-2 text-center text-slate-100"
 			>
 				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
