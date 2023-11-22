@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import { userConfig } from '$lib/stores/userConfig.store';
+	import { themeList, userConfig } from '$lib/stores/userConfig.store';
 	import Icon from './Icon.svelte';
 
 	const dispatch = createEventDispatcher();
@@ -48,6 +48,10 @@
 		} else {
 			$userConfig.fancyCodeEnabled = true;
 		}
+	}
+
+	function selectTheme(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+		$userConfig.selectedTheme = event.currentTarget.value;
 	}
 </script>
 
@@ -113,6 +117,31 @@
 						? 'fancy cursive'
 						: 'regular'} font style</code
 				>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<select
+					class="text-theme-accent-dark m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+					value={$userConfig?.selectedTheme || 'desert-bus'}
+					on:change={selectTheme}
+				>
+					{#each themeList as theme}
+						<option value={theme}>
+							{theme}
+						</option>
+					{/each}
+				</select>
+			</td>
+			<td class="flex items-center justify-around">
+				<div class="bg-theme-primary-light h-8 w-8 ring-1"></div>
+				<div class="bg-theme-primary-dark h-8 w-8 ring-1"></div>
+				<div class="bg-theme-secondary-light h-8 w-8 ring-1"></div>
+				<div class="bg-theme-secondary-dark h-8 w-8 ring-1"></div>
+				<div class="bg-theme-accent-light h-8 w-8 ring-1"></div>
+				<div class="bg-theme-accent-dark h-8 w-8 ring-1"></div>
+				<div class="bg-theme-neutral-light h-8 w-8 ring-1"></div>
+				<div class="bg-theme-neutral-dark h-8 w-8 ring-1"></div>
 			</td>
 		</tr>
 	</table>

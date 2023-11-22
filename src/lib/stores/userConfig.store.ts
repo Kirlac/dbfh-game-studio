@@ -3,11 +3,28 @@ import { getParsedValue, setStringifiedValue } from '../utils/localStorageAccess
 
 export type UserConfigOptions = {
 	fancyCodeEnabled: boolean;
+	selectedTheme:
+		| 'desert-bus'
+		| 'dawn-guard'
+		| 'alpha-flight'
+		| 'night-watch'
+		| 'zeta-shift'
+		| 'omega-shift';
 };
 
 export const defaultOptions: UserConfigOptions = {
-	fancyCodeEnabled: false
+	fancyCodeEnabled: false,
+	selectedTheme: 'desert-bus'
 };
+
+export const themeList = [
+	'desert-bus',
+	'dawn-guard',
+	'alpha-flight',
+	'night-watch',
+	'zeta-shift',
+	'omega-shift'
+];
 
 function initializeUserConfig() {
 	const localStorageKey = 'userConfig';

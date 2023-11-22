@@ -23,9 +23,19 @@
 	function toggleFancyCode(enable: Boolean = false) {
 		if (browser) {
 			if (enable) {
-				document.body.dataset.fancyCode = 'true';
+				document.documentElement.dataset.fancyCode = 'true';
 			} else {
-				document.body.dataset.fancyCode = 'false';
+				document.documentElement.dataset.fancyCode = 'false';
+			}
+		}
+	}
+
+	$: applyTheme($userConfig?.selectedTheme);
+
+	function applyTheme(theme: string = 'desert-bus') {
+		if (browser) {
+			if (theme) {
+				document.documentElement.dataset.theme = theme;
 			}
 		}
 	}

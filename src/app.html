@@ -6,12 +6,24 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		%sveltekit.head%
 		<link href="%sveltekit.assets%/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet" />
+		<script>
+			// Load initial configs from localstorage so we don't get a Flash of Unstyled Content (FOUC)
+			// when the page loads before svelte is active and can take over updating these
+			let userConfig = JSON.parse(localStorage.userConfig);
+			if (userConfig.selectedTheme) {
+				document.documentElement.dataset.theme = userConfig.selectedTheme;
+			} else {
+				document.documentElement.dataset.theme = 'desert-bus';
+			}
+
+			if (userConfig.fancyCodeEnabled) {
+				document.documentElement.fancyCode = 'true';
+			} else {
+				document.documentElement.fancyCode = 'false';
+			}
+		</script>
 	</head>
-	<body
-		data-sveltekit-preload-data="hover"
-		class="bg-theme-primary-dark text-theme-neutral-light"
-		data-theme="desert-bus"
-	>
+	<body data-sveltekit-preload-data="hover" class="bg-theme-primary-dark text-theme-neutral-light">
 		<div id="body-wrapper">%sveltekit.body%</div>
 	</body>
 </html>
