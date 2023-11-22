@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import type { GameData } from '$lib/stores/gameData.store';
 	import { goto } from '$app/navigation';
@@ -15,9 +15,6 @@
 	let value: GameData = defaultGameData;
 	$: displayValue = JSON.stringify(value, null, 2);
 
-	// Create event dispatcher for communicating with parent
-	const dispatch = createEventDispatcher();
-
 	// Intermediary param for close confirmation to prevent accidental closure
 	// - Press once to show confirmation
 	// - Press again when confirmation is visible to actually close
@@ -29,13 +26,6 @@
 		setTimeout(() => {
 			escapePressed = false;
 		}, 1000);
-	}
-
-	// Convert camelCase string to kebab-case for return navigation back to game editor
-	// TODO: It would probably be simpler to update the gameType prop to be kebab case natively
-	// instead of camel case so we don't need to convert it at all, but for now this works
-	function kebabify(camelCaseString: string) {
-		return camelCaseString.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
 	}
 
 	// Keyup listener for handling key presses

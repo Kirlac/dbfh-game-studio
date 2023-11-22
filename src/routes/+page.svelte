@@ -1,9 +1,5 @@
 <script lang="ts">
 	import GameCode from '$lib/components/GameCode.svelte';
-
-	function decodeGameCode(e: CustomEvent<any>): void {
-		throw new Error('Function not implemented.');
-	}
 </script>
 
 <header class="flex flex-col items-center justify-around text-center">
