@@ -6,6 +6,7 @@
 	export let showEditButton = false;
 	export let showPlayButton = false;
 	export let showCopyButton = false;
+	export let placeholderText = 'Paste your game code or drop your .dbfhg file here';
 
 	let copyStatus: 'Copied' | 'Error' = 'Error';
 	let copyStatusVisible = false;
@@ -96,7 +97,8 @@
 		bind:innerText={value}
 		class="h-full w-full overflow-scroll whitespace-break-spaces break-all p-2 {!value
 			? 'placeholder text-stone-900/40'
-			: ''}"></pre>
+			: ''}"
+		data-placeholder-text={placeholderText}></pre>
 
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">
@@ -113,6 +115,6 @@
 
 <style>
 	.placeholder::before {
-		content: 'Paste your game code here';
+		content: attr(data-placeholder-text);
 	}
 </style>

@@ -44,6 +44,14 @@
 	</nav>
 
 	<h2 class="m-4 inline-block text-2xl">Play or edit a game</h2>
-	<p>Paste your game code in the box below then click the play button.</p>
-	<GameCode value="" showEditButton showPlayButton on:change={decodeGameCode}></GameCode>
+	<p>
+		Paste your game code or drop your .dbfhg file into the box below then click the play button.
+	</p>
+	<GameCode
+		value=""
+		placeholderText="Look, Ma! No content!"
+		showEditButton
+		showPlayButton
+		on:change={decodeGameCode}
+	></GameCode>
 </main>
