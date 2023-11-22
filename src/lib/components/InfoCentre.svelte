@@ -51,6 +51,7 @@
 	}
 
 	function selectTheme(event: Event & { currentTarget: EventTarget & HTMLSelectElement }) {
+		// @ts-expect-error: Select options are loaded from an array of the correct values so string should match what's expected but TS linter can't validate them.
 		$userConfig.selectedTheme = event.currentTarget.value;
 	}
 </script>
