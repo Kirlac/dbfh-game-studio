@@ -25,10 +25,11 @@
 	<!-- Editor -->
 	<form class="-ml-2">
 		<button
-			class="text-theme-accent-dark m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+			class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
 			on:click={loadExample}
 		>
-			<Icon name="book" class="text-theme-neutral-dark mx-2"></Icon> Load Example
+			<Icon name="book" class="text-theme-neutral-dark"></Icon><span class="ml-2">Load Example</span
+			>
 		</button>
 	</form>
 
