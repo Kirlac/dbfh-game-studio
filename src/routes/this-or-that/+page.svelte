@@ -33,5 +33,5 @@
 		</button>
 	</form>
 
-	<GameCode bind:value={gameDataBase64} showPlayButton showCopyButton></GameCode>
+	<GameCode bind:value={gameDataBase64} showPlayButton showDiscardButton showCopyButton></GameCode>
 </main>

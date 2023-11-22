@@ -45,11 +45,5 @@
 	<p>
 		Paste your game code or drop your .dbfhg file into the box below then click the play button.
 	</p>
-	<GameCode
-		value=""
-		placeholderText="Look, Ma! No content!"
-		showEditButton
-		showPlayButton
-		on:change={decodeGameCode}
-	></GameCode>
+	<GameCode value="" showPlayButton showEditButton showDiscardButton></GameCode>
 </main>
