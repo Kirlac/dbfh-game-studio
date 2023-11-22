@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { imageToBase64 } from './Base64Encoder';
+	import { imageToBase64 } from '../utils/base64Encoder';
 
 	let imageBase64: unknown;
 	async function loadImage(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {

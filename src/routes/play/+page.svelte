@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import type { GameData } from '$lib/gameData.store';
+	import type { GameData } from '$lib/stores/gameData.store';
 	import { goto } from '$app/navigation';
 
 	const defaultGameData: GameData = {

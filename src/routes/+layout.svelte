@@ -1,8 +1,8 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
-	import HelpCentre from '$lib/HelpCentre.svelte';
-	import Icon from '$lib/Icon.svelte';
+	import HelpCentre from '$lib/components/HelpCentre.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	$: isPlayer = $page?.route?.id === '/play';
 
@@ -16,6 +16,10 @@
 		helpCentre.close();
 	}
 </script>
+
+<svelte:head>
+	<title>The Desert Bus for Hope Game Studio</title>
+</svelte:head>
 
 {#if !isPlayer}
 	<a class="fixed left-0 top-0 m-2 h-12 w-12 rounded-md hover:bg-stone-200" href="/">

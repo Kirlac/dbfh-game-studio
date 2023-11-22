@@ -1,5 +1,5 @@
 <script lang="ts">
-	import GameCode from '$lib/GameCode.svelte';
+	import GameCode from '$lib/components/GameCode.svelte';
 
 	function decodeGameCode(e: CustomEvent<any>): void {
 		throw new Error('Function not implemented.');

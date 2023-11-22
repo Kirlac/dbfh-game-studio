@@ -8,7 +8,7 @@ export function getValue(key: string, initial: string) {
 	return value;
 }
 
-export function getParsedValue(key: string, initial: any) {
+export function getParsedValue(key: string, initial: object) {
 	const saved = JSON.parse(getValue(key, JSON.stringify(initial)));
 	return { ...initial, ...saved };
 }
@@ -20,6 +20,6 @@ export function setValue(key: string, value: string) {
 	return value;
 }
 
-export function setStringifiedValue(key: string, value: any) {
+export function setStringifiedValue(key: string, value: unknown) {
 	return setValue(key, JSON.stringify(value));
 }

@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { stringToBase64 } from '$lib/Base64Encoder';
-	import type { GameData } from '$lib/gameData.store';
-	import GameCode from '$lib/GameCode.svelte';
-	import Icon from '$lib/Icon.svelte';
+	import { stringToBase64 } from '$lib/utils/base64Encoder';
+	import type { GameData } from '$lib/stores/gameData.store';
+	import GameCode from '$lib/components/GameCode.svelte';
+	import Icon from '$lib/components/Icon.svelte';
 
 	const defaultGameData: GameData = {
 		gameType: 'thisOrThat',
