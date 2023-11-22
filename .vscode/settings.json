@@ -1,0 +1,39 @@
+{
+	"editor.formatOnSave": true,
+	"editor.formatOnType": true,
+	"editor.formatOnPaste": true,
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.tabSize": 2,
+	"eslint.format.enable": true,
+	"svelte.enable-ts-plugin": true,
+	"workbench.iconTheme": "vscode-icons",
+	"files.associations": {
+		// Associate css files with tailwindcss to resolve
+		// 'Unknown at rule @tailwind' warnings
+		"*.css": "tailwindcss"
+	},
+	"vsicons.associations.files": [
+		// Reset css icon back to css because the tailwind association
+		// above changes these to use the tailwind icon instead
+		{ "icon": "css", "extensions": [".css"] }
+	],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		".git/objects",
+		".vscode",
+		".vscode-insiders",
+		"**/lib/components/Icon.ts"
+	],
+	"cSpell.words": [
+		"dbfh",
+		"dbfhg",
+		"kebabify",
+		"Kirlac",
+		"leetle",
+		"peench",
+		"tailwindcss",
+		"xmark"
+	]
+}
