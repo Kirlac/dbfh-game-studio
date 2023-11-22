@@ -1,19 +1,19 @@
 <script lang="ts">
 	import '../app.css';
 	import { page } from '$app/stores';
-	import HelpCentre from '$lib/components/HelpCentre.svelte';
+	import InfoCentre from '$lib/components/InfoCentre.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 
 	$: isPlayer = $page?.route?.id === '/play';
 
-	let helpCentre: HTMLDialogElement;
+	let infoCentre: HTMLDialogElement;
 
-	function openHelpCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
-		helpCentre.showModal();
+	function openInfoCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+		infoCentre.showModal();
 	}
 
-	function closeHelpCentre(e: CustomEvent<any>): void {
-		helpCentre.close();
+	function closeInfoCentre(e: CustomEvent<any>): void {
+		infoCentre.close();
 	}
 </script>
 
@@ -28,14 +28,14 @@
 
 	<button
 		class="fixed right-0 top-0 m-2 h-12 w-12 rounded-full hover:bg-stone-200"
-		on:click={openHelpCentre}
+		on:click={openInfoCentre}
 	>
 		<Icon name="circle-info" class="h-full w-full text-stone-400 hover:text-stone-600"></Icon>
 	</button>
 {/if}
 
-<dialog bind:this={helpCentre}>
-	<HelpCentre on:close={closeHelpCentre}></HelpCentre>
+<dialog bind:this={infoCentre}>
+	<InfoCentre on:close={closeInfoCentre}></InfoCentre>
 </dialog>
 
 <slot />

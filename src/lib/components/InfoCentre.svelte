@@ -37,7 +37,7 @@
 		);
 	}
 
-	function closeHelpCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+	function closeInfoCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
 		dispatch('close');
 	}
 
@@ -65,11 +65,11 @@
 <section class="p-4">
 	<button
 		class="absolute right-0 top-0 m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
-		on:click={closeHelpCentre}
+		on:click={closeInfoCentre}
 	>
 		<Icon name="circle-xmark"></Icon>
 	</button>
-	<h1>The Desert Bus for Hope Game Studio Help Centre</h1>
+	<h1>The Desert Bus for Hope Game Studio Info Centre</h1>
 	<h2>Example game codes</h2>
 	<p>Click one of the buttons below to get an example game code you can try out.</p>
 	<menu>
