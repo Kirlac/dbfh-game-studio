@@ -9,7 +9,7 @@
 </script>
 
 <header class="text-center">
-	<h1 class="text-dbfh-headdark m-4 text-4xl">There was an error</h1>
+	<h1 class="text-theme-accent-light m-4 text-4xl">There was an error</h1>
 	{#if $page.status === 404}
 		<h2 class="m-4 text-2xl">Page does not exist</h2>
 		<p class="m-4">
@@ -24,7 +24,7 @@
 </header>
 
 <main
-	class="text-dbfh-text mx-auto w-1/2 rounded-md bg-slate-50 p-4 text-left ring-1 ring-slate-900/10"
+	class="text-theme-neutral-dark mx-auto w-1/2 rounded-md bg-slate-50 p-4 text-left ring-1 ring-slate-900/10"
 >
 	<p>Status code: {$page.status}</p>
 	{#if $page?.error?.message}
@@ -32,7 +32,7 @@
 	{/if}
 	<p>
 		<button
-			class="text-dbfh-headlight rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+			class="text-theme-accent-dark rounded-md p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 			on:click={toggleDetails}
 		>
 			{detailsVisible ? 'Hide' : 'Show'} error details

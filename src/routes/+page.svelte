@@ -8,7 +8,9 @@
 
 <header class="flex flex-col items-center justify-around text-center">
 	<img src="logo-2024-trans-200.png" alt="Desert Bus for Hope" class="inline-block w-[200px]" />
-	<h1 class="text-dbfh-headdark m-4 inline-block text-4xl">The Desert Bus for Hope Game Studio</h1>
+	<h1 class="text-theme-accent-light m-4 inline-block text-4xl">
+		The Desert Bus for Hope Game Studio
+	</h1>
 </header>
 
 <main class="text-center">
@@ -18,25 +20,25 @@
 		<ul class="m-2 flex items-center justify-center">
 			<li>
 				<a
-					class="text-dbfh-headlight m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="text-theme-accent-dark m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
 					href="this-or-that">This or That</a
 				>
 			</li>
 			<li>
 				<a
-					class="text-dbfh-headlight m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="text-theme-accent-dark m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
 					href="only-connect">Only Connect</a
 				>
 			</li>
 			<li>
 				<a
-					class="text-dbfh-headlight m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="text-theme-accent-dark m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
 					href="millionaire">Who Wants to be a Millionaire</a
 				>
 			</li>
 			<li>
 				<a
-					class="text-dbfh-headlight m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="text-theme-accent-dark m-2 inline-block rounded-md bg-slate-50 px-4 py-2 ring-1 ring-slate-900/20 hover:bg-slate-200"
 					href="guess-the-thing">Guess the Thing</a
 				>
 			</li>

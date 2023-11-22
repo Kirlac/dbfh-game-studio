@@ -37,14 +37,14 @@
 
 {#if !isPlayer}
 	<a
-		class="hover:bg-dbfh-accent text-dbfh-accent fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent hover:text-white"
+		class="hover:bg-theme-secondary-light text-theme-secondary-light hover:text-theme-neutral-light fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
 		href="/"
 	>
 		<Icon name="bus" class="text-4xl"></Icon>
 	</a>
 
 	<button
-		class="hover:bg-dbfh-accent text-dbfh-accent fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent hover:text-white"
+		class="hover:bg-theme-secondary-light text-theme-secondary-light hover:text-theme-neutral-light fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
 		on:click={openInfoCentre}
 	>
 		<Icon name="circle-info" class="text-4xl"></Icon>

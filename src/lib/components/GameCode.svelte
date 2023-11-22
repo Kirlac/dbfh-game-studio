@@ -57,12 +57,12 @@
 <section
 	class="relative inline-block h-64 w-3/4 rounded-md bg-slate-50 text-left ring-1 ring-slate-900/10 hover:bg-slate-200 focus:bg-slate-200"
 >
-	{#if value && (showPlayButton || showEditButton || showCopyButton)}
+	{#if $gameData && (showPlayButton || showEditButton || showDeleteButton || showCopyButton)}
 		<menu class="absolute right-0 top-0 flex justify-around">
 			{#if showPlayButton}
 				<li>
 					<button
-						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="text-theme-accent-dark m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={playGame}
 					>
 						<Icon name="play" class="mx-2"></Icon> Play
@@ -72,7 +72,7 @@
 			{#if showEditButton}
 				<li>
 					<button
-						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="text-theme-accent-dark m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={editGame}
 					>
 						<Icon name="pen-to-square" class="mx-2"></Icon> Edit
@@ -82,7 +82,7 @@
 			{#if showCopyButton}
 				<li>
 					<button
-						class="text-dbfh-text m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="text-theme-accent-dark m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 ring-1 ring-slate-900/10 hover:bg-slate-200"
 						on:click={copyGameCode}
 					>
 						<Icon name="clipboard" class="mx-2"></Icon> Copy
@@ -95,9 +95,9 @@
 	<pre
 		contenteditable="true"
 		bind:innerText={value}
-		class="h-full w-full overflow-scroll whitespace-break-spaces break-all p-2 {!value
-			? 'placeholder text-slate-900/40'
-			: 'text-dbfh-text'}"
+		class="h-full w-full overflow-scroll whitespace-break-spaces break-all p-2 {!$gameCode
+			? 'placeholder text-theme-neutral-dark/40'
+			: 'text-theme-neutral-dark'}"
 		data-placeholder-text={placeholderText}></pre>
 
 	{#if copyStatusVisible}
