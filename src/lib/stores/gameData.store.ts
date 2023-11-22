@@ -4,13 +4,13 @@ export const gameData = writable<GameData>();
 
 export type GameData = {
 	// Flag to determine the type of game to load when pasted in to the home page
-	gameType: 'thisOrThat' | 'onlyConnect' | 'millionaire' | 'guessTheThing';
+	gameType?: 'this-or-that' | 'only-connect' | 'millionaire' | 'guess-the-thing';
 	// Title card data
-	titleCard: TitleCard;
+	titleCard?: TitleCard;
 	// Array of questions for the game
-	questions: Question[];
+	questions?: Question[];
 	// End card data
-	endCard: EndCard;
+	endCard?: EndCard;
 };
 
 export interface TitleCard {
@@ -32,7 +32,7 @@ export interface Question {
 	// Array of possible answers to display eg. ['Crab', 'Not Crab']
 	answerOptions?: Answer[];
 	// Array index for the correct answer eg. 0
-	correctAnswerIndex: number;
+	correctAnswerIndex?: number;
 }
 
 export interface Answer {

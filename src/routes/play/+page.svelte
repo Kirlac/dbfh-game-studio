@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 
 	const defaultGameData: GameData = {
-		gameType: 'thisOrThat',
+		gameType: 'this-or-that',
 		titleCard: {},
 		questions: [],
 		endCard: {}
@@ -50,7 +50,7 @@
 				if (!value?.gameType) {
 					goto('/');
 				} else {
-					goto(`/${kebabify(value.gameType)}`);
+					goto(`/${value.gameType}`);
 				}
 				document.removeEventListener('keyup', handleKeyPress);
 			}

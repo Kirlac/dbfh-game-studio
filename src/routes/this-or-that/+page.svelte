@@ -5,7 +5,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 
 	const defaultGameData: GameData = {
-		gameType: 'thisOrThat',
+		gameType: 'this-or-that',
 		titleCard: {},
 		questions: [],
 		endCard: {}

@@ -1,5 +1,5 @@
 {
-	"gameType": "thisOrThat",
+	"gameType": "this-or-that",
 	"titleCard": {
 		"gameTitle": "Crab or No Crab",
 		"gameDescription": "For each image, guess whether or not it is a crab",
