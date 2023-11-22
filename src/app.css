@@ -6,8 +6,22 @@
 	font-family: 'Cascadia Code';
 	src: url('fonts/CascadiaCode-2111.01/woff2/CascadiaCode.woff2');
 }
+
+@font-face {
+	font-family: 'Cascadia Code Italic';
+	src: url('fonts/CascadiaCode-2111.01/woff2/CascadiaCodeItalic.woff2');
+	font-feature-settings: 'calt', 'ss01';
+}
+
 kbd,
 code,
 pre {
 	font-family: 'Cascadia Code';
+}
+
+[data-code-font='fancy'] kbd,
+[data-code-font='fancy'] code,
+[data-code-font='fancy'] pre {
+	font-family: 'Cascadia Code Italic';
+	font-feature-settings: 'calt', 'ss01';
 }
