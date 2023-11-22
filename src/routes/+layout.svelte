@@ -3,6 +3,8 @@
 	import { page } from '$app/stores';
 	import InfoCentre from '$lib/components/InfoCentre.svelte';
 	import Icon from '$lib/components/Icon.svelte';
+	import { userConfig } from '$lib/stores/userConfig.store';
+	import { browser } from '$app/environment';
 
 	$: isPlayer = $page?.route?.id === '/play';
 
@@ -14,6 +16,18 @@
 
 	function closeInfoCentre(e: CustomEvent<any>): void {
 		infoCentre.close();
+	}
+
+	$: toggleFancyCode($userConfig?.fancyCodeEnabled);
+
+	function toggleFancyCode(enable: Boolean = false) {
+		if (browser) {
+			if (enable) {
+				document.body.dataset.fancyCode = 'true';
+			} else {
+				document.body.dataset.fancyCode = 'false';
+			}
+		}
 	}
 </script>
 

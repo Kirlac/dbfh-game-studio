@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
+	import { createEventDispatcher } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import { userConfig } from '$lib/stores/userConfig.store';
 	import Icon from './Icon.svelte';
 
 	const dispatch = createEventDispatcher();
@@ -41,23 +42,11 @@
 		dispatch('close');
 	}
 
-	let fancyCodeEnabled = false;
-
-	onMount(() => {
-		if (document?.body?.dataset?.codeFont === 'fancy') {
-			fancyCodeEnabled = true;
-		} else {
-			fancyCodeEnabled = false;
-		}
-	});
-
 	function toggleFancyCode(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
-		if (fancyCodeEnabled) {
-			fancyCodeEnabled = false;
-			document.body.dataset.codeFont = 'regular';
+		if ($userConfig.fancyCodeEnabled) {
+			$userConfig.fancyCodeEnabled = false;
 		} else {
-			fancyCodeEnabled = true;
-			document.body.dataset.codeFont = 'fancy';
+			$userConfig.fancyCodeEnabled = true;
 		}
 	}
 </script>
@@ -97,8 +86,8 @@
 				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
 				on:click={toggleFancyCode}
 			>
-				<Icon name={fancyCodeEnabled ? 'pen' : 'pen-fancy'} class="mx-2"></Icon>
-				{fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
+				<Icon name={$userConfig.fancyCodeEnabled ? 'pen' : 'pen-fancy'} class="mx-2"></Icon>
+				{$userConfig.fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
 			</button>
 		</li>
 	</menu>
