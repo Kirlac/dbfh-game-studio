@@ -66,11 +66,11 @@
 	<h1 class="text-center text-2xl text-theme-accent-dark">
 		The Desert Bus for Hope Game Studio Information Centre
 	</h1>
-	<h2 class="my-2 text-xl text-theme-accent-dark">Example game codes</h2>
-	<p class="text-theme-neutral-dark">
+	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Example game codes</h2>
+	<p class="text-center text-theme-neutral-dark">
 		Click one of the buttons below to get an example game code you can try out.
 	</p>
-	<h3 class="text-lg text-theme-accent-dark">This or That</h3>
+	<h3 class="text-center text-lg text-theme-accent-dark">This or That</h3>
 	<menu>
 		<li>
 			<button
@@ -93,13 +93,24 @@
 			</button>
 		</li>
 	</menu>
-	<h3 class="text-lg text-theme-accent-dark">Only Connect</h3>
-	<p class="text-theme-neutral-dark">Coming soon...</p>
-	<h3 class="text-lg text-theme-accent-dark">Who Wants to be a Millionaire</h3>
-	<p class="text-theme-neutral-dark">Coming soon...</p>
-	<h3 class="text-lg text-theme-accent-dark">Guess the Thing</h3>
-	<p class="text-theme-neutral-dark">Coming soon...</p>
-	<h2 class="my-2 text-xl text-theme-accent-dark">Settings</h2>
+	<h3 class="text-center text-lg text-theme-accent-dark">Only Connect</h3>
+	<p class="text-center text-theme-neutral-dark">Coming soon...</p>
+	<h3 class="text-center text-lg text-theme-accent-dark">Who Wants to be a Millionaire</h3>
+	<p class="text-center text-theme-neutral-dark">Coming soon...</p>
+	<h3 class="text-center text-lg text-theme-accent-dark">Guess the Thing</h3>
+	<p class="text-center text-theme-neutral-dark">Coming soon...</p>
+	{#if copyStatusVisible}
+		<div transition:fade class="absolute right-0 top-14">
+			<p
+				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
+					? 'bg-green-600/60'
+					: 'bg-red-600/60'} p-2 text-center text-slate-100"
+			>
+				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
+			</p>
+		</div>
+	{/if}
+	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Settings</h2>
 	<table class="w-full">
 		<tr>
 			<td>
@@ -154,8 +165,8 @@
 			</td>
 		</tr>
 	</table>
-	<h2 class="my-2 text-xl text-theme-accent-dark">Keyboard shortcuts</h2>
-	<p class="text-theme-neutral-dark">
+	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Keyboard shortcuts</h2>
+	<p class="text-center text-theme-neutral-dark">
 		Currently none, except for the one to close the player. More will be added when I set up a
 		global keypress listener.
 	</p>
@@ -173,8 +184,8 @@
 			<td class="border p-2">Press twice to close the player and return to the editor</td>
 		</tr>
 	</table>
-	<h2 class="my-2 text-xl text-theme-accent-dark">Contact</h2>
-	<p class="text-theme-neutral-dark">
+	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Contact</h2>
+	<p class="text-center text-theme-neutral-dark">
 		Issues, suggestions and feature requests can be provided via the GitHib repo. Alternatively I
 		can be contacted directly via Mastodon or you can @ me on the LRR Discord.
 	</p>
@@ -194,7 +205,7 @@
 		<li>
 			<a
 				class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
-				href="https://mastodon.social/@kirlac@kind.social"
+				href="https://kind.social/@kirlac"
 				target="_blank"
 				rel="noopener noreferrer"
 			>
@@ -209,15 +220,31 @@
 			</div>
 		</li>
 	</ul>
-	{#if copyStatusVisible}
-		<div transition:fade class="absolute right-0 top-14">
-			<p
-				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
-					? 'bg-green-600/60'
-					: 'bg-red-600/60'} p-2 text-center text-slate-100"
+	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Desert Bus for Hope</h2>
+	<ul class="m-2 flex items-center justify-center">
+		<li>
+			<a
+				class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+				href="https://desertbus.org/"
+				target="_blank"
+				rel="noopener noreferrer"
 			>
-				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
-			</p>
-		</div>
-	{/if}
+				<Icon name="globe" class="fa-xl text-theme-neutral-dark"></Icon><span class="mx-2"
+					>https://desertbus.org/</span
+				><Icon name="up-right-from-square" class="fa-xs"></Icon>
+			</a>
+		</li>
+		<li>
+			<a
+				class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+				href="https://kind.social/@desertbus"
+				target="_blank"
+				rel="noopener noreferrer"
+			>
+				<Icon name="mastodon" class="fa-xl text-theme-neutral-dark"></Icon><span class="mx-2"
+					>@desertbus@kind.social</span
+				><Icon name="up-right-from-square" class="fa-xs"></Icon>
+			</a>
+		</li>
+	</ul>
 </section>
