@@ -23,8 +23,8 @@ pre {
 	font-family: 'Cascadia Code';
 }
 
-[data-code-font='fancy'] code,
-[data-code-font='fancy'] pre {
+[data-fancy-code='true'] code,
+[data-fancy-code='true'] pre {
 	font-family: 'Cascadia Code Italic';
 	font-feature-settings: 'calt', 'ss01';
 }
