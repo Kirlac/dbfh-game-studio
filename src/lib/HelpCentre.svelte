@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import Icon from './Icon.svelte';
 
@@ -40,6 +40,26 @@
 	function closeHelpCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
 		dispatch('close');
 	}
+
+	let fancyCodeEnabled = false;
+
+	onMount(() => {
+		if (document?.body?.dataset?.codeFont === 'fancy') {
+			fancyCodeEnabled = true;
+		} else {
+			fancyCodeEnabled = false;
+		}
+	});
+
+	function toggleFancyCode(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+		if (fancyCodeEnabled) {
+			fancyCodeEnabled = false;
+			document.body.dataset.codeFont = 'regular';
+		} else {
+			fancyCodeEnabled = true;
+			document.body.dataset.codeFont = 'fancy';
+		}
+	}
 </script>
 
 <section class="p-4">
@@ -67,6 +87,18 @@
 				on:click={() => copyExampleGameCode('this-or-that')}
 			>
 				<Icon name="floppy-disk" class="mx-2"></Icon> Download example This or That file
+			</button>
+		</li>
+	</menu>
+	<h2>Settings</h2>
+	<menu>
+		<li>
+			<button
+				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 ring-1 ring-stone-900/10 hover:bg-stone-200"
+				on:click={toggleFancyCode}
+			>
+				<Icon name={fancyCodeEnabled ? 'pen' : 'pen-fancy'} class="mx-2"></Icon>
+				{fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
 			</button>
 		</li>
 	</menu>
