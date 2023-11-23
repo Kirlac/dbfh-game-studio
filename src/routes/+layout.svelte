@@ -14,6 +14,13 @@
 		infoCentreOpen = !infoCentreOpen;
 	}
 
+	let infoCentreButton: HTMLButtonElement;
+	function closeInfoCentre() {
+		infoCentreOpen = false;
+		// Blur to remove focus when Info Centre is closed with the Esc key
+		infoCentreButton?.blur();
+	}
+
 	$: if (browser) {
 		infoCentreOpen
 			? document.body.classList.add('overflow-hidden')
@@ -57,6 +64,7 @@
 
 	<button
 		class="bg-transparent fixed right-0 top-0 z-50 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
+		bind:this={infoCentreButton}
 		on:click={toggleInfoCentre}
 	>
 		<Icon name={infoCentreOpen ? 'circle-xmark' : 'circle-info'} class="text-4xl"></Icon>
@@ -67,7 +75,7 @@
 	<section
 		class="fixed bottom-4 left-4 right-4 top-4 z-40 overflow-scroll rounded-md bg-theme-neutral-light"
 	>
-		<InfoCentre on:close={toggleInfoCentre}></InfoCentre>
+		<InfoCentre on:close={closeInfoCentre}></InfoCentre>
 	</section>
 {/if}
 
