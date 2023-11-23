@@ -12,7 +12,9 @@ No game editors are currently implemented. The "This or That" editor is a work i
 
 ## Technology
 
-This project is being developed with [Svelte](https://svelte.dev/) using [SvelteKit](https://kit.svelte.dev/) and Typescript. There are no APIs or databases. All data is handled in memory as JSON objects. All persistence (such as user configurations) is implemented using the web browser's localstorage functionality.
+This project is being developed with [Svelte](https://svelte.dev/) and [SvelteKit](https://kit.svelte.dev/) using [TypeScript](https://www.typescriptlang.org/). It includes [tailwindcss](https://tailwindcss.com/) for styles, the free version of [Font Awesome](https://fontawesome.com/) for icons and the [Cascadia Code](https://github.com/microsoft/cascadia-code) font for code representations.
+
+There are no APIs or databases. All data is handled in memory as JSON objects. All persistence (such as user configurations) is implemented using the web browser's localstorage functionality.
 
 This project does not rely on any third party websites or services and uses. It will never track you. There are no analytics or metrics being collected. There is no social media integration. It is intended to be lightweight, usable and most importantly respectful of the users and their privacy.
 
