@@ -1,38 +1,39 @@
-# create-svelte
+# The Desert Bus for Hope Game Studio
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+A common element of the Desert Bus for Hope charity livestream event is viewers submitting quizzes and games for the hosts to play on air. One of the biggest problems with this is that doing so requires viewers to create these from scratch or from templates they share with each other, often in the form of a google docs slideshow (or similar) which they then send to the Desert Bus team. The result is a very inconsistent experience with different layouts and visual issues which can cause problems on stream, such as things not loading correctly or stream overlay elements covering up important parts of the game. Additionally, because of the formats used, these usually offer little-to-no interactivity and limited scoring capabilities for tracking answers.
 
-## Creating a project
+This project exists as an attempt to create a unified solution designed with solutions to these problems in mind. A web application where users can create quizzes and games by filling in fields in a simple form. They can then produce a share code, either as a text string which can be copy/pasted or in the form of a downloadable file (which is effectively just a text file containing the same string). These share codes can then be input back into the application to play the games with a consistent feature set, layout and visual design.
 
-If you're seeing this, you've probably already done this step. Congrats!
+## Status
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+The application currently has a functional framework providing the application layout as well as a set of different themes: a Desert Bus theme based on the [Desert Bus website](https://desertbus.org) and five themes based on each of the Desert Bus shift banners (Dawn Guard, Alpha Flight, Night Watch, Zeta Shift and Omega Shift).
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+No game editors are currently implemented. The "This or That" editor is a work in progress and the others do not even have a placeholder page yet. There is a placeholder page for the game player, but it has no functionality and just displays the JSON representation of a placeholder game.
 
-## Developing
+## Technology
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+This project is being developed with [Svelte](https://svelte.dev/) using [SvelteKit](https://kit.svelte.dev/) and Typescript. There are no APIs or databases. All data is handled in memory as JSON objects. All persistence (such as user configurations) is implemented using the web browser's localstorage functionality.
 
-```bash
-npm run dev
+This project does not rely on any third party websites or services and uses. It will never track you. There are no analytics or metrics being collected. There is no social media integration. It is intended to be lightweight, usable and most importantly respectful of the users and their privacy.
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+The only links to third party services are the clearly labelled links in the Contact section of the Information Centre. They exist solely to give users a convenient way back to this repository (for filing issues and suggestions) and to my (mostly unused) mastodon account on [kind.social](https://kind.social) if they wish to contact me directly. Additionally, two links are provided to [desertbus.org](https://desertbus.org/) and the [@desertbus@kind.social](https://kind.social/@desertbus) mastodon account to credit the organizers for the event, as without them this project would not exist.
 
-## Building
+## License
 
-To create a production version of your app:
+This project is currently unlicensed, meaning it is NOT open source. This is merely a temporary situation during the initial development phase, as the main focus is currently on getting a functional system up an running.
 
-```bash
-npm run build
-```
+When this project gets closer to completion and opens up for testing and feedback, I will also take the time to review license options and transition it to an open source project which people can contribute to or fork for their own purposes.
 
-You can preview the production build with `npm run preview`.
+## Contributions
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+Bug reports and suggestions are welcome using the GitHub issues system.
+
+The application will be open sourced when it's closer to completion, at which point code contributions will also be welcome.
+
+Development and compilation instructions, coding standards/guidelines and contribution guidance will be provided when the project is transitioned to open source.
+
+## Notes
+
+This readme will be updated over time to reflect the current state of the project and provide some basic documentation.
+
+This project is a non-commercial work created voluntarily. It is not and will never be for profit. Financial donations towards development will never be accepted. If you wish to show your support financially, I ask that you please instead donate to a charitable foundation such as [Child's Play](https://www.childsplaycharity.org/) (either directly or via the next Desert Bus for Hope event) which is the foundation Desert Bus raises money for.
