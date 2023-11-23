@@ -18,12 +18,12 @@ export const defaultOptions: UserConfigOptions = {
 };
 
 export const themeList = [
-	'desert-bus',
-	'dawn-guard',
-	'alpha-flight',
-	'night-watch',
-	'zeta-shift',
-	'omega-shift'
+	{ key: 'desert-bus', value: 'Desert Bus' },
+	{ key: 'dawn-guard', value: 'Dawn Guard' },
+	{ key: 'alpha-flight', value: 'Alpha Flight' },
+	{ key: 'night-watch', value: 'Night Watch' },
+	{ key: 'zeta-shift', value: 'Zeta Shift' },
+	{ key: 'omega-shift', value: 'Omega Shift' }
 ];
 
 function initializeUserConfig() {

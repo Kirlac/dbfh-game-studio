@@ -8,22 +8,21 @@
 
 	$: isPlayer = $page?.route?.id === '/play';
 
-	let infoCentre: HTMLDialogElement;
 	let infoCentreOpen = false;
 
-	function openInfoCentre() {
-		infoCentre.showModal();
-		infoCentreOpen = true;
+	function toggleInfoCentre() {
+		infoCentreOpen = !infoCentreOpen;
 	}
 
-	function closeInfoCentre() {
-		infoCentre.close();
-		infoCentreOpen = false;
+	$: if (browser) {
+		infoCentreOpen
+			? document.body.classList.add('overflow-hidden')
+			: document.body.classList.remove('overflow-hidden');
 	}
 
-	$: toggleFancyCode($userConfig?.fancyCodeEnabled);
+	$: setFancyCode($userConfig?.fancyCodeEnabled);
 
-	function toggleFancyCode(enable: Boolean = false) {
+	function setFancyCode(enable: Boolean = false) {
 		if (browser) {
 			if (enable) {
 				document.documentElement.dataset.fancyCode = 'true';
@@ -50,29 +49,26 @@
 
 {#if !isPlayer}
 	<a
-		class="bg-transparent fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
+		class="bg-transparent fixed left-0 top-0 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		href="/"
 	>
 		<Icon name="bus" class="text-4xl"></Icon>
 	</a>
 
 	<button
-		class="bg-transparent fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
-		on:click={openInfoCentre}
+		class="bg-transparent fixed right-0 top-0 z-50 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
+		on:click={toggleInfoCentre}
 	>
 		<Icon name={infoCentreOpen ? 'circle-xmark' : 'circle-info'} class="text-4xl"></Icon>
 	</button>
 {/if}
 
-<dialog bind:this={infoCentre} class="rounded-md">
-	<InfoCentre on:close={closeInfoCentre}></InfoCentre>
-</dialog>
+{#if infoCentreOpen}
+	<section
+		class="absolute bottom-4 left-4 right-4 top-4 z-40 overflow-scroll rounded-md bg-theme-neutral-light"
+	>
+		<InfoCentre on:close={toggleInfoCentre}></InfoCentre>
+	</section>
+{/if}
 
 <slot />
-
-<style>
-	/* ::backdrop {
-		background-image: linear-gradient(45deg, magenta, rebeccapurple, dodgerblue, green);
-		opacity: 0.75;
-	} */
-</style>
