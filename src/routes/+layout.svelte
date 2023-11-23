@@ -65,7 +65,7 @@
 
 {#if infoCentreOpen}
 	<section
-		class="absolute bottom-4 left-4 right-4 top-4 z-40 overflow-scroll rounded-md bg-theme-neutral-light"
+		class="fixed bottom-4 left-4 right-4 top-4 z-40 overflow-scroll rounded-md bg-theme-neutral-light"
 	>
 		<InfoCentre on:close={toggleInfoCentre}></InfoCentre>
 	</section>
