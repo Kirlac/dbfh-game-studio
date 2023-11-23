@@ -35,69 +35,117 @@ pre {
 @layer base {
 	/* Desert Bus For Hope */
 	[data-theme='desert-bus'] {
+		--tpl: rgb(66 111 187);
 		--theme-primary-light: 66 111 187;
+		--tpd: rgb(48 81 138);
 		--theme-primary-dark: 48 81 138;
-		--theme-secondary-light: 28 187 187;
+		--tsl: rgb(255 255 255);
+		--theme-secondary-light: 255 255 255;
+		--tsd: rgb(28 187 187);
 		--theme-secondary-dark: 28 187 187;
+		--tal: rgb(247 204 88);
 		--theme-accent-light: 247 204 88;
+		--tad: rgb(56 116 203);
 		--theme-accent-dark: 56 116 203;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 	/* Desert Bus Shift Banner Themes */
 	/* Dawn Guard */
 	[data-theme='dawn-guard'] {
+		--tpl: rgb(213 127 63);
 		--theme-primary-light: 213 127 63;
+		--tpd: rgb(169 104 58);
 		--theme-primary-dark: 169 104 58;
+		--tsl: rgb(0 0 0);
 		--theme-secondary-light: 0 0 0;
+		--tsd: rgb(0 0 0);
 		--theme-secondary-dark: 0 0 0;
+		--tal: rgb(231 224 97);
 		--theme-accent-light: 231 224 97;
+		--tad: rgb(0 0 0);
 		--theme-accent-dark: 0 0 0;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 	/* Alpha Flight */
 	[data-theme='alpha-flight'] {
+		--tpl: rgb(157 51 49);
 		--theme-primary-light: 157 51 49;
+		--tpd: rgb(86 30 29);
 		--theme-primary-dark: 86 30 29;
+		--tsl: rgb(0 0 0);
 		--theme-secondary-light: 0 0 0;
+		--tsd: rgb(0 0 0);
 		--theme-secondary-dark: 0 0 0;
+		--tal: rgb(0 0 0);
 		--theme-accent-light: 0 0 0;
+		--tad: rgb(0 0 0);
 		--theme-accent-dark: 0 0 0;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 	/* Night Watch */
 	[data-theme='night-watch'] {
+		--tpl: rgb(87 158 201);
 		--theme-primary-light: 87 158 201;
+		--tpd: rgb(54 101 159);
 		--theme-primary-dark: 54 101 159;
+		--tsl: rgb(0 0 0);
 		--theme-secondary-light: 0 0 0;
+		--tsd: rgb(0 0 0);
 		--theme-secondary-dark: 0 0 0;
+		--tal: rgb(32 32 72);
 		--theme-accent-light: 32 32 72;
+		--tad: rgb(0 0 0);
 		--theme-accent-dark: 0 0 0;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 	/* Zeta Shift */
 	[data-theme='zeta-shift'] {
+		--tpl: rgb(128 94 147);
 		--theme-primary-light: 128 94 147;
+		--tpd: rgb(79 51 111);
 		--theme-primary-dark: 79 51 111;
-		--theme-secondary-light: 0 0 0;
-		--theme-secondary-dark: 0 0 0;
-		--theme-accent-light: 0 0 0;
+		--tsl: rgb(128 94 147);
+		--theme-secondary-light: 128 94 147;
+		--tsd: rgb(79 51 111);
+		--theme-secondary-dark: 79 51 111;
+		--tal: rgb(112 112 51);
+		--theme-accent-light: 112 112 51;
+		--tad: rgb(0 0 0);
 		--theme-accent-dark: 0 0 0;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 	/* Omega Shift */
 	[data-theme='omega-shift'] {
+		--tpl: rgb(138 196 197);
 		--theme-primary-light: 138 196 197;
+		--tpd: rgb(209 156 73);
 		--theme-primary-dark: 209 156 73;
-		--theme-secondary-light: 0 0 0;
-		--theme-secondary-dark: 0 0 0;
+		--tsl: rgb(138 196 197);
+		--theme-secondary-light: 138 196 197;
+		--tsd: rgb(109 109 106);
+		--theme-secondary-dark: 109 109 106;
+		--tal: rgb(61 127 72);
 		--theme-accent-light: 61 127 72;
-		--theme-accent-dark: 109 109 106;
+		--tad: rgb(61 127 72);
+		--theme-accent-dark: 61 127 72;
+		--tnl: rgb(255 255 255);
 		--theme-neutral-light: 255 255 255;
+		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
 	}
 }
