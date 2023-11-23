@@ -16,25 +16,25 @@
 		<ul class="m-2 flex items-center justify-center">
 			<li>
 				<a
-					class="m-2 inline-block rounded-md bg-slate-50 px-4 py-2 text-theme-accent-dark ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="bg-stone-50 ring-stone-900/20 hover:bg-stone-200 m-2 inline-block rounded-md px-4 py-2 text-theme-accent-dark ring-1"
 					href="this-or-that">This or That</a
 				>
 			</li>
 			<li>
 				<a
-					class="m-2 inline-block rounded-md bg-slate-50 px-4 py-2 text-theme-accent-dark ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="bg-stone-50 ring-stone-900/20 hover:bg-stone-200 m-2 inline-block rounded-md px-4 py-2 text-theme-accent-dark ring-1"
 					href="only-connect">Only Connect</a
 				>
 			</li>
 			<li>
 				<a
-					class="m-2 inline-block rounded-md bg-slate-50 px-4 py-2 text-theme-accent-dark ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="bg-stone-50 ring-stone-900/20 hover:bg-stone-200 m-2 inline-block rounded-md px-4 py-2 text-theme-accent-dark ring-1"
 					href="millionaire">Who Wants to be a Millionaire</a
 				>
 			</li>
 			<li>
 				<a
-					class="m-2 inline-block rounded-md bg-slate-50 px-4 py-2 text-theme-accent-dark ring-1 ring-slate-900/20 hover:bg-slate-200"
+					class="bg-stone-50 ring-stone-900/20 hover:bg-stone-200 m-2 inline-block rounded-md px-4 py-2 text-theme-accent-dark ring-1"
 					href="guess-the-thing">Guess the Thing</a
 				>
 			</li>

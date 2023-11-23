@@ -25,7 +25,7 @@
 	<!-- Editor -->
 	<form class="-ml-2">
 		<button
-			class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+			class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
 			on:click={loadExample}
 		>
 			<Icon name="book" class="text-theme-neutral-dark"></Icon><span class="ml-2">Load Example</span

@@ -68,14 +68,14 @@
 </script>
 
 <section
-	class="relative inline-block h-64 w-3/4 rounded-md bg-slate-50 text-left ring-1 ring-slate-900/10 hover:bg-slate-200 focus:bg-slate-200"
+	class="bg-stone-50 ring-stone-900/10 hover:bg-stone-200 focus:bg-stone-200 relative inline-block h-64 w-3/4 rounded-md text-left ring-1"
 >
 	{#if value && (showPlayButton || showEditButton || showDiscardButton || showCopyButton)}
 		<menu class="absolute right-0 top-0 flex justify-around">
 			{#if showPlayButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
 						on:click={playGame}
 					>
 						<Icon name="play" class="text-theme-neutral-dark"></Icon><span class="ml-2">Play</span>
@@ -85,7 +85,7 @@
 			{#if showEditButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
 						on:click={editGame}
 					>
 						<Icon name="pen-to-square" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -97,7 +97,7 @@
 			{#if showDiscardButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
 						on:click={discardGame}
 					>
 						<Icon name="trash-can" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -109,7 +109,7 @@
 			{#if showCopyButton}
 				<li>
 					<button
-						class="m-2 flex items-center justify-center rounded-md bg-slate-100 p-2 text-theme-accent-dark ring-1 ring-slate-900/10 hover:bg-slate-200"
+						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
 						on:click={copyGameCode}
 					>
 						<Icon name="clipboard" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -124,7 +124,7 @@
 	<pre
 		contenteditable="true"
 		bind:innerText={value}
-		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md bg-slate-50 p-2 hover:bg-slate-200 focus:bg-slate-200 {!value
+		class="bg-stone-50 hover:bg-stone-200 focus:bg-stone-200 h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {!value
 			? 'placeholder text-theme-neutral-dark/40'
 			: 'text-theme-neutral-dark'}"
 		data-placeholder-text={placeholderText}></pre>
@@ -134,7 +134,7 @@
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'copied'
 					? 'bg-green-600'
-					: 'bg-red-600'} p-2 text-center text-slate-100"
+					: 'bg-red-600'} text-stone-100 p-2 text-center"
 			>
 				{copyStatus === 'copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
