@@ -9,13 +9,16 @@
 	$: isPlayer = $page?.route?.id === '/play';
 
 	let infoCentre: HTMLDialogElement;
+	let infoCentreOpen = false;
 
-	function openInfoCentre(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+	function openInfoCentre() {
 		infoCentre.showModal();
+		infoCentreOpen = true;
 	}
 
-	function closeInfoCentre(e: CustomEvent<any>): void {
+	function closeInfoCentre() {
 		infoCentre.close();
+		infoCentreOpen = false;
 	}
 
 	$: toggleFancyCode($userConfig?.fancyCodeEnabled);
@@ -47,17 +50,17 @@
 
 {#if !isPlayer}
 	<a
-		class="hover:bg-theme-secondary-light text-theme-secondary-light hover:text-theme-neutral-light fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
+		class="bg-transparent fixed left-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		href="/"
 	>
 		<Icon name="bus" class="text-4xl"></Icon>
 	</a>
 
 	<button
-		class="hover:bg-theme-secondary-light text-theme-secondary-light hover:text-theme-neutral-light fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full bg-transparent"
+		class="bg-transparent fixed right-0 top-0 m-2 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		on:click={openInfoCentre}
 	>
-		<Icon name="circle-info" class="text-4xl"></Icon>
+		<Icon name={infoCentreOpen ? 'circle-xmark' : 'circle-info'} class="text-4xl"></Icon>
 	</button>
 {/if}
 
