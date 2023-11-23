@@ -56,6 +56,7 @@
 
 {#if !isPlayer}
 	<a
+		title="Home"
 		class="bg-transparent fixed left-0 top-0 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		href="/"
 	>
@@ -63,6 +64,7 @@
 	</a>
 
 	<button
+		title="Information Centre"
 		class="bg-transparent fixed right-0 top-0 z-50 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		bind:this={infoCentreButton}
 		on:click={toggleInfoCentre}
