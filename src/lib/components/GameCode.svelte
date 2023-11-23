@@ -11,14 +11,14 @@
 	export let showCopyButton = false;
 	export let placeholderText = 'Paste your game code or drop your .dbfhg file here';
 
-	let copyStatus: 'Copied' | 'Error' = 'Error';
+	let copyStatus: 'copied' | 'error' = 'error';
 	let copyStatusVisible = false;
 	// Helper function to show copy status for 2000ms
-	function showCopyStatus() {
+	function showCopyStatus(timeoutMs: number = 2000) {
 		copyStatusVisible = true;
 		setTimeout(() => {
 			copyStatusVisible = false;
-		}, 2000);
+		}, timeoutMs);
 	}
 
 	function playGame() {
@@ -52,19 +52,15 @@
 	}
 
 	function copyGameCode() {
-		const type = 'text/plain';
-		const blob = new Blob([value], { type });
-		const data = [new ClipboardItem({ [type]: blob })];
-
-		navigator.clipboard.write(data).then(
+		navigator.clipboard.writeText(value).then(
 			() => {
 				/* success */
-				copyStatus = 'Copied';
+				copyStatus = 'copied';
 				showCopyStatus();
 			},
 			() => {
 				/* failure */
-				copyStatus = 'Error';
+				copyStatus = 'error';
 				showCopyStatus();
 			}
 		);
@@ -128,7 +124,7 @@
 	<pre
 		contenteditable="true"
 		bind:innerText={value}
-		class="h-full w-full overflow-scroll whitespace-break-spaces break-all p-2 {!value
+		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md bg-slate-50 p-2 hover:bg-slate-200 focus:bg-slate-200 {!value
 			? 'placeholder text-theme-neutral-dark/40'
 			: 'text-theme-neutral-dark'}"
 		data-placeholder-text={placeholderText}></pre>
@@ -136,11 +132,11 @@
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">
 			<p
-				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
-					? 'bg-green-600/60'
-					: 'bg-red-600/60'} p-2 text-center text-slate-100"
+				class="relative m-2 inline-block rounded-md {copyStatus === 'copied'
+					? 'bg-green-600'
+					: 'bg-red-600'} p-2 text-center text-slate-100"
 			>
-				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
+				{copyStatus === 'copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
 		</div>
 	{/if}

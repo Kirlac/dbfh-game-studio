@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { createEventDispatcher } from 'svelte';
+	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { themeList, userConfig } from '$lib/stores/userConfig.store';
 	import Icon from './Icon.svelte';
 
 	const dispatch = createEventDispatcher();
 
-	let copyStatus: 'Copied' | 'Error' = 'Error';
+	let copyStatus: 'copied' | 'error' = 'error';
 	let copyStatusVisible = false;
 	// Helper function to show copy status for 2000ms
 	function showCopyStatus() {
@@ -20,19 +20,15 @@
 		const exampleResponse = await fetch('this-or-that-example.dbfhg');
 		let gameCode = await exampleResponse.text();
 
-		const type = 'text/plain';
-		const blob = new Blob([gameCode], { type });
-		const data = [new ClipboardItem({ [type]: blob })];
-
-		navigator.clipboard.write(data).then(
+		navigator.clipboard.writeText(gameCode).then(
 			() => {
 				/* success */
-				copyStatus = 'Copied';
+				copyStatus = 'copied';
 				showCopyStatus();
 			},
 			() => {
 				/* failure */
-				copyStatus = 'Error';
+				copyStatus = 'error';
 				showCopyStatus();
 			}
 		);
@@ -54,6 +50,11 @@
 		// @ts-expect-error: Select options are loaded from an array of the correct values so string should match what's expected but TS linter can't validate them.
 		$userConfig.selectedTheme = event.currentTarget.value;
 	}
+
+	let secure = false;
+	onMount(() => {
+		secure = window.isSecureContext;
+	});
 </script>
 
 <section class="p-4">
@@ -102,11 +103,11 @@
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">
 			<p
-				class="relative m-2 inline-block rounded-md {copyStatus === 'Copied'
-					? 'bg-green-600/60'
-					: 'bg-red-600/60'} p-2 text-center text-slate-100"
+				class="relative m-2 inline-block rounded-md {copyStatus === 'copied'
+					? 'bg-green-600'
+					: 'bg-red-600'} p-2 text-center text-slate-100"
 			>
-				{copyStatus === 'Copied' ? 'Game code copied successfully' : 'Error copying game code'}
+				{copyStatus === 'copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
 		</div>
 	{/if}
