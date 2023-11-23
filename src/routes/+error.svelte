@@ -24,7 +24,7 @@
 </header>
 
 <main
-	class="bg-stone-50 ring-stone-900/10 mx-auto w-1/2 rounded-md p-4 text-left text-theme-neutral-dark ring-1"
+	class="mx-auto w-3/4 overflow-scroll rounded-md bg-stone-50 p-4 text-left text-theme-neutral-dark ring-1 ring-stone-900/10"
 >
 	<p>Status code: {$page.status}</p>
 	{#if $page?.error?.message}
@@ -32,7 +32,7 @@
 	{/if}
 	<p>
 		<button
-			class="ring-stone-900/10 hover:bg-stone-200 rounded-md p-2 text-theme-accent-dark ring-1"
+			class="rounded-md p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 			on:click={toggleDetails}
 		>
 			{detailsVisible ? 'Hide' : 'Show'} error details
