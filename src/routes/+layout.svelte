@@ -56,7 +56,7 @@
 	}
 
 	function handleKeyPress(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
-		if (infoCentreOpen) {
+		if (infoCentreOpen || event.key === 'i') {
 			// Assume key presses are intended for the Info Centre and nowhere else
 			switch (event.key) {
 				case 'i':
