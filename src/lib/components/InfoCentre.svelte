@@ -122,7 +122,7 @@
 						on:change={selectTheme}
 					>
 						{#each themeList as theme}
-							<option value={theme.key}>
+							<option class="text-center" value={theme.key}>
 								{theme.value}
 							</option>
 						{/each}
