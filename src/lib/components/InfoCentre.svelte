@@ -131,7 +131,7 @@
 				<span class="mr-2">Theme</span>
 			</td>
 			<td class="text-center">
-				<div id="theme-selector" class="ml-2 inline-block p-2">
+				<div id="theme-selector" class="inline-block p-2">
 					<select
 						class="m-2 rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						value={$userConfig?.selectedTheme || 'desert-bus'}
@@ -181,28 +181,40 @@
 	</table>
 	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Keyboard shortcuts</h2>
 	<p class="text-center text-theme-neutral-dark">More will be added as required.</p>
-	<table class="w-full table-fixed rounded text-theme-neutral-dark">
-		<tr>
-			<th class="w-64">Shortcut</th>
-			<th class="text-left">Action</th>
-		</tr>
-		<tr>
-			<td class="text-center"
-				><kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
-					>Esc</kbd
-				></td
-			>
-			<td>
-				<ul>
-					<li><span class="font-bold">Information Centre</span>: Close Information Centre</li>
-					<li>
-						<span class="font-bold">Player</span>: Press twice to close the player and return to the
-						editor. Will return to the home page if no valid game is loaded.
-					</li>
-				</ul>
-			</td>
-		</tr>
-	</table>
+	<div class="text-center">
+		<table class="inline-table table-auto divide-y divide-stone-200 text-theme-neutral-dark">
+			<tr>
+				<th class="w-32 py-2 text-center">Shortcut</th>
+				<th class="py-2 text-left">Action</th>
+			</tr>
+			<tr>
+				<td class="py-2 text-center">
+					<kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
+						>i</kbd
+					>
+				</td>
+				<td class="py-2 text-left"
+					><span class="font-bold">Global</span>: Toggle Information Centre.</td
+				>
+			</tr>
+			<tr>
+				<td class="py-2 text-center"
+					><kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
+						>Esc</kbd
+					></td
+				>
+				<td class="py-2 text-left">
+					<ul>
+						<li><span class="font-bold">Information Centre</span>: Close Information Centre.</li>
+						<li>
+							<span class="font-bold">Player</span>: Press twice to close the player and return to
+							the editor. Will return to the home page if no valid game is loaded.
+						</li>
+					</ul>
+				</td>
+			</tr>
+		</table>
+	</div>
 	<h2 class="my-2 text-center text-xl text-theme-accent-dark">Contact</h2>
 	<p class="text-center text-theme-neutral-dark">
 		Issues, suggestions and feature requests can be provided via the GitHib repo. Alternatively I

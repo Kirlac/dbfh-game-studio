@@ -54,7 +54,15 @@
 		}
 	}
 
-	let homeButtonHovered = false;
+	function handleKeyPress(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
+		switch (event.key) {
+			case 'i':
+				toggleInfoCentre();
+				break;
+			default:
+				break;
+		}
+	}
 </script>
 
 <svelte:head>
@@ -89,3 +97,5 @@
 {/if}
 
 <slot />
+
+<svelte:window on:keyup={handleKeyPress} />
