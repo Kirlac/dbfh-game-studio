@@ -41,7 +41,7 @@
 		<menu class="mb-4 inline-flex w-3/4 items-center justify-around">
 			<li>
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				>
 					<Icon name="file" class="text-theme-neutral-dark"></Icon><span class="ml-2">New Game</span
 					>
@@ -49,7 +49,7 @@
 			</li>
 			<li>
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={loadExample}
 				>
 					<Icon name="book" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -59,7 +59,7 @@
 			</li>
 			<li>
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				>
 					<Icon name="play" class="text-theme-neutral-dark"></Icon><span class="ml-2"
 						>Play Game</span
@@ -68,7 +68,7 @@
 			</li>
 			<li>
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={toggleInstructionsVisibility}
 				>
 					<Icon name="book-open-reader" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -78,7 +78,7 @@
 			</li>
 			<li>
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={toggleCodeVisibility}
 				>
 					<Icon name="file-code" class="text-theme-neutral-dark"></Icon><span class="ml-2"

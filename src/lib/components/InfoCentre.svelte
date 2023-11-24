@@ -71,7 +71,7 @@
 			<menu>
 				<li>
 					<button
-						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 inline-flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+						class="m-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						on:click={() => copyExampleGameCode('this-or-that')}
 					>
 						<Icon name="clipboard" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -81,7 +81,7 @@
 				</li>
 				<li>
 					<a
-						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 inline-flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+						class="m-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						href="this-or-that-example.dbfhg"
 						download="this-or-that-example.dbfhg"
 					>
@@ -110,7 +110,7 @@
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'copied'
 					? 'bg-green-600'
-					: 'bg-red-600'} text-stone-100 p-2 text-center"
+					: 'bg-red-600'} p-2 text-center text-stone-100"
 			>
 				{copyStatus === 'copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>
@@ -133,7 +133,7 @@
 			<td class="text-center">
 				<div id="theme-selector" class="ml-2 inline-block p-2">
 					<select
-						class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 rounded-md p-2 text-theme-accent-dark ring-1"
+						class="m-2 rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						value={$userConfig?.selectedTheme || 'desert-bus'}
 						on:change={selectTheme}
 					>
@@ -164,7 +164,7 @@
 			</td>
 			<td class="text-center">
 				<button
-					class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 inline-flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+					class="m-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={toggleFancyCode}
 				>
 					{$userConfig.fancyCodeEnabled ? 'Disable' : 'Enable'} fancy code
@@ -188,7 +188,7 @@
 		</tr>
 		<tr>
 			<td class="text-center"
-				><kbd class="bg-stone-200 text-stone-600 ring-stone-900/10 rounded px-2 shadow-md ring-1"
+				><kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
 					>Esc</kbd
 				></td
 			>
@@ -211,7 +211,7 @@
 	<ul class="m-2 flex items-center justify-center">
 		<li>
 			<a
-				class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				href="https://github.com/Kirlac/dbfh-game-studio"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -223,7 +223,7 @@
 		</li>
 		<li>
 			<a
-				class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				href="https://kind.social/@kirlac"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -243,7 +243,7 @@
 	<ul class="m-2 flex items-center justify-center">
 		<li>
 			<a
-				class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				href="https://desertbus.org/"
 				target="_blank"
 				rel="noopener noreferrer"
@@ -255,7 +255,7 @@
 		</li>
 		<li>
 			<a
-				class="bg-stone-100 ring-stone-900/10 hover:bg-stone-200 m-2 flex items-center justify-center rounded-md p-2 text-theme-accent-dark ring-1"
+				class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				href="https://kind.social/@desertbus"
 				target="_blank"
 				rel="noopener noreferrer"
