@@ -38,6 +38,12 @@
 					href="guess-the-thing">Guess the Thing</a
 				>
 			</li>
+			<li>
+				<a
+					class="m-2 inline-block rounded-md bg-stone-50 px-4 py-2 text-theme-accent-dark ring-1 ring-stone-900/20 hover:bg-stone-200"
+					href="silhouette">Who's That Silhouette?</a
+				>
+			</li>
 		</ul>
 	</nav>
 

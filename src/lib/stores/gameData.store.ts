@@ -4,7 +4,7 @@ export const gameData = writable<GameData>();
 
 export type GameData = {
 	// Flag to determine the type of game to load when pasted in to the home page
-	gameType?: 'this-or-that' | 'only-connect' | 'millionaire' | 'guess-the-thing';
+	gameType?: 'this-or-that' | 'only-connect' | 'millionaire' | 'guess-the-thing' | 'silhouette';
 	// Title card data
 	titleCard?: TitleCard;
 	// Array of questions for the game
