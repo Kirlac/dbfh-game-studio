@@ -1,10 +1,7 @@
 <script lang="ts">
-	import { createEventDispatcher, onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { themeList, userConfig } from '$lib/stores/userConfig.store';
 	import Icon from './Icon.svelte';
-
-	const dispatch = createEventDispatcher();
 
 	let copyStatus: 'copied' | 'error' = 'error';
 	let copyStatusVisible = false;
@@ -42,19 +39,6 @@
 		// @ts-expect-error: Select options are loaded from an array of the correct values so string should match what's expected but TS linter can't validate them.
 		$userConfig.selectedTheme = event.currentTarget.value;
 	}
-
-	// Keyup listener for handling key presses
-	function handleKeyPress(this: Document, ev: KeyboardEvent) {
-		if (ev.key === 'Escape') {
-			document.removeEventListener('keyup', handleKeyPress);
-			dispatch('close');
-		}
-	}
-
-	onMount(() => {
-		// Bind keyup event listener
-		document.addEventListener('keyup', handleKeyPress);
-	});
 </script>
 
 <section class="h-full w-full p-4">

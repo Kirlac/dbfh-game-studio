@@ -1,8 +1,9 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import type { GameData } from '$lib/stores/gameData.store';
 	import { goto } from '$app/navigation';
+	import type { GameData } from '$lib/stores/gameData.store';
+	import { keyPressEvent } from '$lib/stores/keyListener.Store';
 
 	const defaultGameData: GameData = {
 		gameType: undefined,
@@ -28,11 +29,15 @@
 		}, timeoutMs);
 	}
 
+	$: if ($keyPressEvent) {
+		handleKeyPress($keyPressEvent);
+	}
+
 	// Keyup listener for handling key presses
-	function handleKeyPress(this: Document, ev: KeyboardEvent) {
+	function handleKeyPress(event: KeyboardEvent) {
 		// TODO: Convert if block to switch/case for handling full keyboard interaction
 		// Escape should confirm and close the player to return to the editor
-		if (ev.key === 'Escape') {
+		if (event.key === 'Escape') {
 			if (!escapePressed) {
 				showCloseConfirmation();
 			} else {
@@ -54,8 +59,6 @@
 
 	// Mounting logic
 	onMount(() => {
-		// Bind keyup event listener
-		document.addEventListener('keyup', handleKeyPress);
 		// Flash close confirmation message on load so user knows how to exit
 		showCloseConfirmation();
 	});

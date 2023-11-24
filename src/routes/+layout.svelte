@@ -5,6 +5,7 @@
 	import Icon from '$lib/components/Icon.svelte';
 	import { userConfig } from '$lib/stores/userConfig.store';
 	import { browser } from '$app/environment';
+	import { keyPressEvent } from '$lib/stores/keyListener.Store';
 
 	// Hide home button on player page to prevent accidental clicks
 	// Player page provides it's own close functionality with confirmation
@@ -55,12 +56,20 @@
 	}
 
 	function handleKeyPress(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
-		switch (event.key) {
-			case 'i':
-				toggleInfoCentre();
-				break;
-			default:
-				break;
+		if (infoCentreOpen) {
+			// Assume key presses are intended for the Info Centre and nowhere else
+			switch (event.key) {
+				case 'i':
+					toggleInfoCentre();
+					break;
+				case 'Escape':
+					closeInfoCentre();
+				default:
+					break;
+			}
+		} else {
+			// Propagate key press so other components can take action
+			$keyPressEvent = event;
 		}
 	}
 </script>
@@ -92,7 +101,7 @@
 	<section
 		class="fixed bottom-4 left-4 right-4 top-4 z-40 overflow-scroll rounded-md bg-theme-neutral-light"
 	>
-		<InfoCentre on:close={closeInfoCentre}></InfoCentre>
+		<InfoCentre></InfoCentre>
 	</section>
 {/if}
 
