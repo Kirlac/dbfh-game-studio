@@ -20,12 +20,12 @@
 	// - Press again when confirmation is visible to actually close
 	let escapePressed = false;
 
-	// Helper function to show close confirmation for 1000ms
-	function showCloseConfirmation() {
+	// Helper function to show close confirmation
+	function showCloseConfirmation(timeoutMs: number = 5000) {
 		escapePressed = true;
 		setTimeout(() => {
 			escapePressed = false;
-		}, 1000);
+		}, timeoutMs);
 	}
 
 	// Keyup listener for handling key presses
