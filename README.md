@@ -20,6 +20,8 @@ This project does not rely on any third party websites or services and uses. It 
 
 The only links to third party services are the clearly labelled links in the Contact section of the Information Centre. They exist solely to give users a convenient way back to this repository (for filing issues and suggestions) and to my (mostly unused) mastodon account on [kind.social](https://kind.social) if they wish to contact me directly. Additionally, two links are provided to [desertbus.org](https://desertbus.org/) and the [@desertbus@kind.social](https://kind.social/@desertbus) mastodon account to credit the organizers for the event, as without them this project would not exist.
 
+The published version of this app is being hosted on [Vercel](https://vercel.com/) using a free Hobby tier account.
+
 ## License
 
 This project is currently unlicensed, meaning it is NOT open source. This is merely a temporary situation during the initial development phase, as the main focus is currently on getting a functional system up an running.
