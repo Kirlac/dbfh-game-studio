@@ -10,7 +10,7 @@
 	export let showDiscardButton = false;
 	export let showUploadButton = false;
 	export let showCopyButton = false;
-	export let placeholderText = 'Paste your game code or drop your .dbfhg file here';
+	export let placeholderText = 'Paste your game code or drop your game file here';
 
 	let copyStatus: 'copied' | 'error' = 'error';
 	let copyStatusVisible = false;
@@ -73,21 +73,23 @@
 
 	let dragEnterCounter = 0;
 	let dragging = false;
+	let dropValid: boolean | undefined = undefined;
 
 	$: if (dragEnterCounter < 1) {
 		dragging = false;
-		placeholderText = 'Paste your game code or drop your .dbfhg file here';
+		placeholderText = 'Paste your game code or drop your game file here';
 	} else {
 		dragging = true;
-		placeholderText = 'Drop your .dbfhg file here';
+		placeholderText = 'Drop your game file here';
 	}
 
-	function handleDragEnter(event: DragEvent & { currentTarget: EventTarget & HTMLElement }) {
+	function handleDragEnter(event: DragEvent & { currentTarget: EventTarget & Window }) {
 		event.preventDefault();
 		dragEnterCounter++;
+		dropValid = undefined;
 	}
 
-	function handleDragLeave(event: DragEvent & { currentTarget: EventTarget & HTMLElement }) {
+	function handleDragLeave(event: DragEvent & { currentTarget: EventTarget & Window }) {
 		event.preventDefault();
 		dragEnterCounter--;
 	}
@@ -121,19 +123,31 @@
 	function handleDragOver(event: DragEvent & { currentTarget: EventTarget & HTMLElement }) {
 		// Prevent default behavior (Prevent file from being opened)
 		event.preventDefault();
+		if (event.dataTransfer?.items || event.dataTransfer?.files) {
+			if (event.dataTransfer.items.length != 1 && event.dataTransfer.files.length != 1) {
+				dropValid = false;
+				placeholderText = 'Only upload one game file at a time please';
+			} else {
+				dropValid = true;
+				placeholderText = 'Everything looks good so far';
+			}
+		}
 	}
 </script>
 
+<svelte:window on:dragenter={handleDragEnter} on:dragleave={handleDragLeave} />
+
 <section
-	class="relative inline-block h-64 w-3/4 rounded-md bg-stone-50 text-left ring-1 ring-stone-900/10 hover:bg-stone-200 focus:bg-stone-200 {dragging
-		? 'outline-dashed outline-4 outline-offset-4 outline-theme-accent-light'
-		: ''}"
-	class:dragging
+	class="relative inline-block h-64 w-3/4 rounded-md text-left text-theme-neutral-dark/40 ring-1 ring-stone-900/10 {!dragging
+		? 'bg-stone-50 hover:bg-stone-200 focus:bg-stone-200'
+		: dropValid === true
+		  ? 'bg-theme-accent-light/80 text-theme-neutral-light outline-dashed outline-4 outline-offset-4 outline-theme-accent-light '
+		  : dropValid === false
+		    ? 'outline-theme-status-error bg-theme-status-error/60 text-theme-neutral-light outline-dashed outline-4 outline-offset-4'
+		    : 'bg-stone-50 outline-dashed outline-4 outline-offset-4 outline-stone-50'}"
 	role="form"
-	on:dragenter={handleDragEnter}
 	on:dragover={handleDragOver}
 	on:drop={handleDrop}
-	on:dragleave={handleDragLeave}
 >
 	{#if showPlayButton || showEditButton || showDiscardButton || showUploadButton || showCopyButton}
 		<menu class="absolute right-0 top-0 flex justify-around">
@@ -201,9 +215,9 @@
 	<pre
 		contenteditable="true"
 		bind:innerText={value}
-		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md bg-stone-50 p-2 hover:bg-stone-200 focus:bg-stone-200 {!value
-			? 'placeholder text-theme-neutral-dark/40'
-			: 'text-theme-neutral-dark'}"
+		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {value
+			? 'text-theme-neutral-dark'
+			: 'placeholder'}"
 		data-placeholder-text={placeholderText}></pre>
 
 	{#if copyStatusVisible}
