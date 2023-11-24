@@ -72,7 +72,7 @@
 		>
 			Press <kbd class="rounded bg-stone-200 px-2 text-stone-600 shadow-md ring-1 ring-stone-900/10"
 				>Esc</kbd
-			> key twice to return to editor
+			> key to return to editor
 		</p>
 	</div>
 {/if}
