@@ -93,8 +93,8 @@
 		<div transition:fade class="absolute right-0 top-14">
 			<p
 				class="relative m-2 inline-block rounded-md {copyStatus === 'copied'
-					? 'bg-green-600'
-					: 'bg-red-600'} p-2 text-center text-stone-100"
+					? 'bg-theme-status-success'
+					: 'bg-theme-status-error'} p-2 text-center text-stone-100"
 			>
 				{copyStatus === 'copied' ? 'Game code copied successfully' : 'Error copying game code'}
 			</p>

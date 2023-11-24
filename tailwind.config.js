@@ -6,8 +6,6 @@ export default {
 	theme: {
 		colors: {
 			stone: colors.stone,
-			red: colors.red,
-			green: colors.green,
 			theme: {
 				primary: {
 					light: 'rgb(var(--theme-primary-light) / <alpha-value>)',
@@ -24,6 +22,10 @@ export default {
 				neutral: {
 					light: 'rgb(var(--theme-neutral-light) / <alpha-value>)',
 					dark: 'rgb(var(--theme-neutral-dark) / <alpha-value>)'
+				},
+				status: {
+					success: 'rgb(var(--theme-status-success) / <alpha-value>)',
+					error: 'rgb(var(--theme-status-error) / <alpha-value>)'
 				}
 			}
 		},

@@ -51,6 +51,10 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 	/* Desert Bus Shift Banner Themes */
 	/* Dawn Guard */
@@ -71,6 +75,10 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 	/* Alpha Flight */
 	[data-theme='alpha-flight'] {
@@ -90,6 +98,10 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 	/* Night Watch */
 	[data-theme='night-watch'] {
@@ -109,6 +121,10 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 	/* Zeta Shift */
 	[data-theme='zeta-shift'] {
@@ -128,6 +144,10 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 	/* Omega Shift */
 	[data-theme='omega-shift'] {
@@ -147,5 +167,9 @@ pre {
 		--theme-neutral-light: 255 255 255;
 		--tnd: rgb(69 69 69);
 		--theme-neutral-dark: 69 69 69;
+		--tss: rgb(22 163 74);
+		--theme-status-success: 22 163 74;
+		--tse: rgb(220 38 38);
+		--theme-status-error: 220 38 38;
 	}
 }
