@@ -5,7 +5,7 @@
 	import { goto } from '$app/navigation';
 
 	const defaultGameData: GameData = {
-		gameType: 'this-or-that',
+		gameType: undefined,
 		titleCard: {},
 		questions: [],
 		endCard: {}
