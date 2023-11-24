@@ -33,10 +33,10 @@
 	let gameDataJson = '{}';
 
 	$: try {
-		gameData = base64ToString(value);
+		gameDataJson = base64ToString(value) || '{}';
 	} catch (error) {
 		console.log(error);
-		gameData = '{}';
+		gameDataJson = '{}';
 	}
 
 	$: gameData = JSON.parse(gameDataJson);
@@ -71,6 +71,13 @@
 		);
 	}
 
+	async function parseGameFile(file: File) {
+		let fileContents = await file.text();
+		if (fileContents) {
+			value = fileContents;
+		}
+	}
+
 	let dragEnterCounter = 0;
 	let dragging = false;
 	let dropValid: boolean | undefined = undefined;
@@ -102,21 +109,32 @@
 		dragEnterCounter = 0;
 
 		if (event.dataTransfer) {
-			if (event.dataTransfer.items) {
-				// Use DataTransferItemList interface to access the file(s)
-				[...event.dataTransfer.items].forEach((item, i) => {
-					// If dropped items aren't files, reject them
-					if (item.kind === 'file') {
-						const file = item.getAsFile();
-						console.log(`… file[${i}].name = ${file?.name}`);
+			if (event.dataTransfer?.items[0]) {
+				let item = event.dataTransfer.items[0];
+				if (item.kind === 'file') {
+					let file = item.getAsFile();
+					if (file) {
+						parseGameFile(file);
 					}
-				});
-			} else {
-				// Use DataTransfer interface to access the file(s)
-				[...event.dataTransfer.files].forEach((file, i) => {
-					console.log(`… file[${i}].name = ${file.name}`);
-				});
+				}
+			} else if (event.dataTransfer.files[0]) {
+				parseGameFile(event.dataTransfer.files[0]);
 			}
+			// if (event.dataTransfer.items) {
+			// 	// Use DataTransferItemList interface to access the file(s)
+			// 	[...event.dataTransfer.items].forEach((item, i) => {
+			// 		// If dropped items aren't files, reject them
+			// 		if (item.kind === 'file') {
+			// 			const file = item.getAsFile();
+			// 			console.log(`… file[${i}].name = ${file?.name}`);
+			// 		}
+			// 	});
+			// } else {
+			// 	// Use DataTransfer interface to access the file(s)
+			// 	[...event.dataTransfer.files].forEach((file, i) => {
+			// 		console.log(`… file[${i}].name = ${file.name}`);
+			// 	});
+			// }
 		}
 	}
 
