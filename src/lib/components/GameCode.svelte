@@ -23,7 +23,7 @@
 	}
 
 	function playGame() {
-		goto('/play');
+		goto('/play', { replaceState: false });
 	}
 
 	let emptyGame = {};
@@ -43,7 +43,7 @@
 
 	function editGame() {
 		if (gameData?.gameType) {
-			goto(`/${gameData.gameType}`);
+			goto(`/${gameData.gameType}`, { replaceState: false });
 		}
 	}
 

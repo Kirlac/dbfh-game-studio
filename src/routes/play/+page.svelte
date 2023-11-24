@@ -38,9 +38,9 @@
 			} else {
 				// Navigate back to home page for now
 				if (!value?.gameType) {
-					goto('/');
+					goto('/', { replaceState: false });
 				} else {
-					goto(`/${value.gameType}`);
+					goto(`/${value.gameType}`, { replaceState: false });
 				}
 				document.removeEventListener('keyup', handleKeyPress);
 			}
