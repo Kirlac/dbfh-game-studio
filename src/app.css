@@ -10,12 +10,12 @@
 /* Font Faces for code blocks */
 @font-face {
 	font-family: 'Cascadia Code';
-	src: url('fonts/CascadiaCode-2111.01/woff2/CascadiaCode.woff2');
+	src: url('$lib/assets/fonts/CascadiaCode-2111.01/woff2/CascadiaCode.woff2');
 }
 
 @font-face {
 	font-family: 'Cascadia Code Italic';
-	src: url('fonts/CascadiaCode-2111.01/woff2/CascadiaCodeItalic.woff2');
+	src: url('$lib/assets/fonts/CascadiaCode-2111.01/woff2/CascadiaCodeItalic.woff2');
 	font-feature-settings: 'calt', 'ss01';
 }
 
