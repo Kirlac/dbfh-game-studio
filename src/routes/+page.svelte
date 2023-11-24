@@ -29,7 +29,7 @@
 			<li>
 				<a
 					class="m-2 inline-block rounded-md bg-stone-50 px-4 py-2 text-theme-accent-dark ring-1 ring-stone-900/20 hover:bg-stone-200"
-					href="millionaire">Who Wants to be a Millionaire</a
+					href="millionaire">Who Wants to be a Millionaire?</a
 				>
 			</li>
 			<li>
