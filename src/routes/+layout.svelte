@@ -6,7 +6,12 @@
 	import { userConfig } from '$lib/stores/userConfig.store';
 	import { browser } from '$app/environment';
 
+	// Hide home button on player page to prevent accidental clicks
+	// Player page provides it's own close functionality with confirmation
 	$: isPlayer = $page?.route?.id === '/play';
+
+	// Hide home button on home page because it's redundant and confusing
+	$: isHome = $page?.route?.id === '/';
 
 	let infoCentreOpen = false;
 
@@ -48,30 +53,32 @@
 			}
 		}
 	}
+
+	let homeButtonHovered = false;
 </script>
 
 <svelte:head>
 	<title>The Desert Bus for Hope Game Studio</title>
 </svelte:head>
 
-{#if !isPlayer}
+{#if !isHome && !isPlayer}
 	<a
 		title="Home"
 		class="bg-transparent fixed left-0 top-0 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		href="/"
 	>
-		<Icon name="bus" class="text-4xl"></Icon>
+		<Icon name="circle-arrow-left" class="text-4xl"></Icon>
 	</a>
-
-	<button
-		title="Information Centre"
-		class="bg-transparent fixed right-0 top-0 z-50 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
-		bind:this={infoCentreButton}
-		on:click={toggleInfoCentre}
-	>
-		<Icon name={infoCentreOpen ? 'circle-xmark' : 'circle-info'} class="text-4xl"></Icon>
-	</button>
 {/if}
+
+<button
+	title="Information Centre"
+	class="bg-transparent fixed right-0 top-0 z-50 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
+	bind:this={infoCentreButton}
+	on:click={toggleInfoCentre}
+>
+	<Icon name={infoCentreOpen ? 'circle-xmark' : 'circle-info'} class="text-4xl"></Icon>
+</button>
 
 {#if infoCentreOpen}
 	<section
