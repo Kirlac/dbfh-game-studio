@@ -4,7 +4,7 @@
 	import Icon from './Icon.svelte';
 	import { gameData, gameDataBase64 } from '$lib/stores/gameData.store';
 
-	//let value: string;
+	$: value = $gameDataBase64;
 	export let showPlayButton = false;
 	export let showEditButton = false;
 	export let showDiscardButton = false;
@@ -62,8 +62,11 @@
 		}
 	}
 
+	function parseGameCode(event: Event & { currentTarget: EventTarget & HTMLPreElement }) {
+		gameData.setBase64(event.currentTarget.innerText);
+	}
+
 	function uploadGame(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		console.log(event.currentTarget.files);
 		if (event.currentTarget.files?.[0]) {
 			parseGameFile(event.currentTarget.files[0]);
 			// Clear file list so the same file can be uploaded again if it gets discarded
@@ -235,10 +238,12 @@
 
 	<pre
 		contenteditable="true"
+		bind:innerText={value}
+		on:input={parseGameCode}
 		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {$gameDataBase64
 			? 'text-theme-neutral-dark'
 			: 'placeholder'}"
-		data-placeholder-text={placeholderDisplayText}>{$gameDataBase64}</pre>
+		data-placeholder-text={placeholderDisplayText}></pre>
 
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">
