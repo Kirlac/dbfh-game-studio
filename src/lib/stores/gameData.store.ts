@@ -76,24 +76,24 @@ function getDecodedGameData(value: string | null | undefined): string | null {
 	}
 }
 
-function getJsonGameData(value: GameData | null | undefined): string | null {
+function getJsonGameData(value: GameData | null | undefined): string {
 	if (value) {
 		return JSON.stringify(value);
 	} else {
-		return null;
+		return '';
 	}
 }
 
-function getBase64GameData(value: GameData | null | undefined): string | null {
+function getBase64GameData(value: GameData | null | undefined): string {
 	if (value) {
 		const json = getJsonGameData(value);
 		if (json) {
 			return stringToBase64(json);
 		} else {
-			return null;
+			return '';
 		}
 	} else {
-		return null;
+		return '';
 	}
 }
 
