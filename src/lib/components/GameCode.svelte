@@ -10,7 +10,10 @@
 	export let showDiscardButton = false;
 	export let showUploadButton = false;
 	export let showCopyButton = false;
-	export let placeholderText = 'Paste your game code or drop your game file here';
+
+	export let placeholderText =
+		'Paste your game code or drop your Desert Bus for Hope game file here';
+	let placeholderDisplayText = placeholderText;
 
 	let copyStatus: 'copied' | 'error' = 'error';
 	let copyStatusVisible = false;
@@ -52,8 +55,20 @@
 		value = '';
 	}
 
-	function uploadGame(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
-		throw new Error('Function not implemented.');
+	async function parseGameFile(file: File | null) {
+		if (file) {
+			let fileContents = await file.text();
+			if (fileContents) {
+				// TODO: Validate file
+				value = fileContents;
+			}
+		}
+	}
+
+	function uploadGame(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		if (event.currentTarget.files?.[0]) {
+			parseGameFile(event.currentTarget.files[0]);
+		}
 	}
 
 	function copyGameCode() {
@@ -71,23 +86,16 @@
 		);
 	}
 
-	async function parseGameFile(file: File) {
-		let fileContents = await file.text();
-		if (fileContents) {
-			value = fileContents;
-		}
-	}
-
 	let dragEnterCounter = 0;
 	let dragging = false;
 	let dropValid: boolean | undefined = undefined;
 
 	$: if (dragEnterCounter < 1) {
 		dragging = false;
-		placeholderText = 'Paste your game code or drop your game file here';
+		placeholderDisplayText = placeholderText;
 	} else {
 		dragging = true;
-		placeholderText = 'Drop your game file here';
+		placeholderDisplayText = 'Drop your Desert Bus for Hope game file here';
 	}
 
 	function handleDragEnter(event: DragEvent & { currentTarget: EventTarget & Window }) {
@@ -101,7 +109,7 @@
 		dragEnterCounter--;
 	}
 
-	// File drag and drop handling copied and adapted from MDN docs
+	// File drag and drop handling logic copied and adapted from MDN docs
 	// see: https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API/File_drag_and_drop
 	function handleDrop(event: DragEvent & { currentTarget: EventTarget & HTMLElement }) {
 		// Prevent default behavior (Prevent file from being opened)
@@ -110,31 +118,15 @@
 
 		if (event.dataTransfer) {
 			if (event.dataTransfer?.items[0]) {
+				// Get file from dataTransfer.items
 				let item = event.dataTransfer.items[0];
 				if (item.kind === 'file') {
-					let file = item.getAsFile();
-					if (file) {
-						parseGameFile(file);
-					}
+					parseGameFile(item.getAsFile());
 				}
-			} else if (event.dataTransfer.files[0]) {
+			} else {
+				// Get file from dataTransfer.Files
 				parseGameFile(event.dataTransfer.files[0]);
 			}
-			// if (event.dataTransfer.items) {
-			// 	// Use DataTransferItemList interface to access the file(s)
-			// 	[...event.dataTransfer.items].forEach((item, i) => {
-			// 		// If dropped items aren't files, reject them
-			// 		if (item.kind === 'file') {
-			// 			const file = item.getAsFile();
-			// 			console.log(`… file[${i}].name = ${file?.name}`);
-			// 		}
-			// 	});
-			// } else {
-			// 	// Use DataTransfer interface to access the file(s)
-			// 	[...event.dataTransfer.files].forEach((file, i) => {
-			// 		console.log(`… file[${i}].name = ${file.name}`);
-			// 	});
-			// }
 		}
 	}
 
@@ -144,10 +136,10 @@
 		if (event.dataTransfer?.items || event.dataTransfer?.files) {
 			if (event.dataTransfer.items.length != 1 && event.dataTransfer.files.length != 1) {
 				dropValid = false;
-				placeholderText = 'Only upload one game file at a time please';
+				placeholderDisplayText = 'Only upload one game file at a time please';
 			} else {
 				dropValid = true;
-				placeholderText = 'Everything looks good so far';
+				placeholderDisplayText = 'Everything looks good so far';
 			}
 		}
 	}
@@ -161,7 +153,7 @@
 		: dropValid === true
 		  ? 'bg-theme-accent-light/80 text-theme-neutral-light outline-dashed outline-4 outline-offset-4 outline-theme-accent-light '
 		  : dropValid === false
-		    ? 'outline-theme-status-error bg-theme-status-error/60 text-theme-neutral-light outline-dashed outline-4 outline-offset-4'
+		    ? 'bg-theme-status-error/60 text-theme-neutral-light outline-dashed outline-4 outline-offset-4 outline-theme-status-error'
 		    : 'bg-stone-50 outline-dashed outline-4 outline-offset-4 outline-stone-50'}"
 	role="form"
 	on:dragover={handleDragOver}
@@ -205,14 +197,21 @@
 			{/if}
 			{#if showUploadButton}
 				<li>
-					<button
-						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-						on:click={uploadGame}
+					<label
+						for="gameUpload"
+						class="m-2 flex cursor-pointer items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					>
 						<Icon name="file-arrow-up" class="text-theme-neutral-dark"></Icon><span class="ml-2"
 							>Upload</span
 						>
-					</button>
+					</label>
+					<input
+						id="gameUpload"
+						name="gameUpload"
+						type="file"
+						class="h-0 w-0 opacity-0"
+						on:change={uploadGame}
+					/>
 				</li>
 			{/if}
 			{#if value && showCopyButton}
@@ -236,7 +235,7 @@
 		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {value
 			? 'text-theme-neutral-dark'
 			: 'placeholder'}"
-		data-placeholder-text={placeholderText}></pre>
+		data-placeholder-text={placeholderDisplayText}></pre>
 
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">
