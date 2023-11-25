@@ -205,7 +205,7 @@
 			{#if showUploadButton}
 				<li>
 					<label
-						for="gameUpload"
+						for="game-upload"
 						class="m-2 flex cursor-pointer items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					>
 						<Icon name="file-arrow-up" class="text-theme-neutral-dark"></Icon><span class="ml-2"
@@ -213,8 +213,8 @@
 						>
 					</label>
 					<input
-						id="gameUpload"
-						name="gameUpload"
+						id="game-upload"
+						name="game-upload"
 						type="file"
 						class="h-0 w-0 opacity-0"
 						on:change={uploadGame}
