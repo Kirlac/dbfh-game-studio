@@ -2,10 +2,9 @@
 	import { goto } from '$app/navigation';
 	import { fade } from 'svelte/transition';
 	import Icon from './Icon.svelte';
-	import { base64ToString, stringToBase64 } from '$lib/utils/base64Encoder';
-	import type { GameData } from '$lib/stores/gameData.store';
+	import { gameData, gameDataBase64 } from '$lib/stores/gameData.store';
 
-	export let value: string;
+	//let value: string;
 	export let showPlayButton = false;
 	export let showEditButton = false;
 	export let showDiscardButton = false;
@@ -30,30 +29,14 @@
 		goto('/play', { replaceState: false });
 	}
 
-	let emptyGame = {};
-	let emptyGameJson = JSON.stringify(emptyGame);
-	let emptyGameBase64 = stringToBase64(emptyGameJson);
-
-	let gameDataJson = '{}';
-
-	$: try {
-		gameDataJson = base64ToString(value) || '{}';
-	} catch (error) {
-		console.log(error);
-		gameDataJson = '{}';
-	}
-
-	$: gameData = JSON.parse(gameDataJson);
-
 	function editGame() {
-		if (gameData?.gameType) {
-			goto(`/${gameData.gameType}`, { replaceState: false });
+		if ($gameData?.gameType) {
+			goto(`/${$gameData.gameType}`, { replaceState: false });
 		}
 	}
 
 	function discardGame() {
-		//value = emptyGameBase64;
-		value = '';
+		$gameData = null;
 	}
 
 	async function parseGameFile(file: File | null) {
@@ -63,12 +46,8 @@
 			if (fileContents) {
 				try {
 					// Validate file by converting to JSON and parsing
-					let jsonContents = base64ToString(fileContents);
-					let jsonGameData = JSON.parse(jsonContents);
-					if (jsonGameData) {
-						value = fileContents;
-						success = true;
-					}
+					gameData.setBase64(fileContents);
+					success = true;
 				} catch {
 					success = false;
 				}
@@ -95,18 +74,20 @@
 	}
 
 	function copyGameCode() {
-		navigator.clipboard.writeText(value).then(
-			() => {
-				/* success */
-				copyStatus = 'copied';
-				showCopyStatus();
-			},
-			() => {
-				/* failure */
-				copyStatus = 'error';
-				showCopyStatus();
-			}
-		);
+		if ($gameDataBase64) {
+			navigator.clipboard.writeText($gameDataBase64).then(
+				() => {
+					/* success */
+					copyStatus = 'copied';
+					showCopyStatus();
+				},
+				() => {
+					/* failure */
+					copyStatus = 'error';
+					showCopyStatus();
+				}
+			);
+		}
 	}
 
 	let dragEnterCounter = 0;
@@ -184,7 +165,7 @@
 >
 	{#if showPlayButton || showEditButton || showDiscardButton || showUploadButton || showCopyButton}
 		<menu class="absolute right-0 top-0 flex justify-around">
-			{#if value && showPlayButton}
+			{#if $gameData && showPlayButton}
 				<li>
 					<button
 						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
@@ -194,7 +175,7 @@
 					</button>
 				</li>
 			{/if}
-			{#if value && showEditButton}
+			{#if $gameData && showEditButton}
 				<li>
 					<button
 						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
@@ -206,7 +187,7 @@
 					</button>
 				</li>
 			{/if}
-			{#if value && showDiscardButton}
+			{#if $gameData && showDiscardButton}
 				<li>
 					<button
 						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
@@ -237,7 +218,7 @@
 					/>
 				</li>
 			{/if}
-			{#if value && showCopyButton}
+			{#if $gameDataBase64 && showCopyButton}
 				<li>
 					<button
 						class="m-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
@@ -254,11 +235,10 @@
 
 	<pre
 		contenteditable="true"
-		bind:innerText={value}
-		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {value
+		class="h-full w-full overflow-scroll whitespace-break-spaces break-all rounded-md p-2 {$gameDataBase64
 			? 'text-theme-neutral-dark'
 			: 'placeholder'}"
-		data-placeholder-text={placeholderDisplayText}></pre>
+		data-placeholder-text={placeholderDisplayText}>{$gameDataBase64}</pre>
 
 	{#if copyStatusVisible}
 		<div transition:fade class="absolute right-0 top-14">

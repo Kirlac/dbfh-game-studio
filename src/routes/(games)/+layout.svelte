@@ -1,21 +1,19 @@
 <script lang="ts">
-	import { stringToBase64 } from '$lib/utils/base64Encoder';
-	import type { GameData } from '$lib/stores/gameData.store';
+	import { page } from '$app/stores';
+	import { gameData } from '$lib/stores/gameData.store';
 	import GameCode from '$lib/components/GameCode.svelte';
 	import Icon from '$lib/components/Icon.svelte';
-	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
 
-	let gameData: GameData = $page?.data?.defaultGameData;
-	$: gameDataJson = JSON.stringify(gameData);
-	$: gameDataBase64 = stringToBase64(gameDataJson);
-
-	async function loadExample() {
-		const exampleResponse = await fetch(`${gameData.gameType}-example.dbfhg`);
-		let exampleGameCode = await exampleResponse.text();
-		let exampleGameData = JSON.parse(exampleGameCode);
-		gameData = exampleGameData;
+	function playGame() {
+		goto('/play', { replaceState: false });
 	}
 
+	async function loadExample() {
+		const exampleResponse = await fetch(`${$page.data.defaultGameData.gameType}-example.dbfhg`);
+		let exampleGameCode = await exampleResponse.text();
+		gameData.setBase64(exampleGameCode);
+	}
 	let instructionsVisible = true;
 
 	function toggleInstructionsVisibility() {
@@ -42,6 +40,16 @@
 			<li>
 				<button
 					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					on:click={playGame}
+				>
+					<Icon name="play" class="text-theme-neutral-dark"></Icon><span class="ml-2"
+						>Play Game</span
+					>
+				</button>
+			</li>
+			<li>
+				<button
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 				>
 					<Icon name="file" class="text-theme-neutral-dark"></Icon><span class="ml-2">New Game</span
 					>
@@ -54,15 +62,6 @@
 				>
 					<Icon name="book" class="text-theme-neutral-dark"></Icon><span class="ml-2"
 						>Load Example</span
-					>
-				</button>
-			</li>
-			<li>
-				<button
-					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-				>
-					<Icon name="play" class="text-theme-neutral-dark"></Icon><span class="ml-2"
-						>Play Game</span
 					>
 				</button>
 			</li>
@@ -95,8 +94,7 @@
 		{/if}
 
 		{#if codeVisible}
-			<GameCode bind:value={gameDataBase64} showPlayButton showDiscardButton showCopyButton
-			></GameCode>
+			<GameCode showPlayButton showDiscardButton showCopyButton></GameCode>
 		{/if}
 	</section>
 

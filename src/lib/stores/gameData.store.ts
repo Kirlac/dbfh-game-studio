@@ -1,6 +1,5 @@
-import { writable } from 'svelte/store';
-
-export const gameData = writable<GameData>();
+import { base64ToString, stringToBase64 } from '$lib/utils/base64Encoder';
+import { derived, writable } from 'svelte/store';
 
 export type GameData = {
 	// Flag to determine the type of game to load when pasted in to the home page
@@ -52,3 +51,75 @@ export interface EndCard {
 	//Base64 image to display on the end card
 	endImage?: string;
 }
+
+function getParsedGameData(value: string | null | undefined): GameData | null {
+	try {
+		if (value) {
+			return JSON.parse(value);
+		} else {
+			return null;
+		}
+	} catch {
+		return null;
+	}
+}
+
+function getDecodedGameData(value: string | null | undefined): string | null {
+	try {
+		if (value) {
+			return base64ToString(value);
+		} else {
+			return null;
+		}
+	} catch {
+		return null;
+	}
+}
+
+function getJsonGameData(value: GameData | null | undefined): string | null {
+	if (value) {
+		return JSON.stringify(value);
+	} else {
+		return null;
+	}
+}
+
+function getBase64GameData(value: GameData | null | undefined): string | null {
+	if (value) {
+		const json = getJsonGameData(value);
+		if (json) {
+			return stringToBase64(json);
+		} else {
+			return null;
+		}
+	} else {
+		return null;
+	}
+}
+
+function initializeGameData() {
+	const { subscribe, set, update } = writable<GameData | null | undefined>();
+
+	return {
+		subscribe,
+		set: (value: GameData) => {
+			set(value);
+		},
+		setJson: (value: string) => {
+			const game = getParsedGameData(value);
+			set(game);
+		},
+		setBase64: (value: string) => {
+			const gameJson = getDecodedGameData(value);
+			const game = getParsedGameData(gameJson);
+			set(game);
+		},
+		update
+	};
+}
+
+export const gameData = initializeGameData();
+
+export const gameDataJson = derived(gameData, ($gameData) => getJsonGameData($gameData));
+
+export const gameDataBase64 = derived(gameData, ($gameData) => getBase64GameData($gameData));

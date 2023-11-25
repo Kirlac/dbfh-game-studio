@@ -52,5 +52,5 @@
 		Paste your game code or drop your Desert Bus for Hope game file into the box below then click
 		the play button.
 	</p>
-	<GameCode value="" showPlayButton showEditButton showDiscardButton showUploadButton></GameCode>
+	<GameCode showPlayButton showEditButton showDiscardButton showUploadButton></GameCode>
 </main>

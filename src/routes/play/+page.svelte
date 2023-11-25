@@ -2,19 +2,11 @@
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
 	import { goto } from '$app/navigation';
-	import type { GameData } from '$lib/stores/gameData.store';
+	import { gameData } from '$lib/stores/gameData.store';
 	import { keyPressEvent } from '$lib/stores/keyListener.Store';
 
-	const defaultGameData: GameData = {
-		gameType: undefined,
-		titleCard: {},
-		questions: [],
-		endCard: {}
-	};
-
 	// Declare json object representing our game
-	let value: GameData = defaultGameData;
-	$: displayValue = JSON.stringify(value, null, 2);
+	$: displayValue = JSON.stringify($gameData, null, 2);
 
 	// Intermediary param for close confirmation to prevent accidental closure
 	// - Press once to show confirmation
@@ -42,10 +34,10 @@
 				showCloseConfirmation();
 			} else {
 				// Navigate back to home page for now
-				if (!value?.gameType) {
+				if (!$gameData?.gameType) {
 					goto('/', { replaceState: false });
 				} else {
-					goto(`/${value.gameType}`, { replaceState: false });
+					goto(`/${$gameData.gameType}`, { replaceState: false });
 				}
 				document.removeEventListener('keyup', handleKeyPress);
 			}
@@ -69,7 +61,7 @@
 </main>
 
 {#if escapePressed}
-	<div out:fade class="absolute left-0 top-0 flex h-screen w-screen items-end justify-center">
+	<div out:fade class="fixed left-0 top-0 flex h-screen w-screen items-end justify-center">
 		<p
 			class="relative m-12 inline-block rounded-md bg-stone-500 p-2 text-center font-sans text-4xl text-stone-100"
 		>
