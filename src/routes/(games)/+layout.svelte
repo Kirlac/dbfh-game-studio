@@ -94,7 +94,7 @@
 		{/if}
 
 		{#if codeVisible}
-			<GameCode showPlayButton showDiscardButton showCopyButton></GameCode>
+			<GameCode showPlayButton showDiscardButton showUploadButton showCopyButton></GameCode>
 		{/if}
 	</section>
 
