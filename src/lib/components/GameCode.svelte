@@ -3,6 +3,7 @@
 	import { fade } from 'svelte/transition';
 	import Icon from './Icon.svelte';
 	import { base64ToString, stringToBase64 } from '$lib/utils/base64Encoder';
+	import type { GameData } from '$lib/stores/gameData.store';
 
 	export let value: string;
 	export let showPlayButton = false;
@@ -56,12 +57,29 @@
 	}
 
 	async function parseGameFile(file: File | null) {
+		let success = false;
 		if (file) {
 			let fileContents = await file.text();
 			if (fileContents) {
-				// TODO: Validate file
-				value = fileContents;
+				try {
+					// Validate file by converting to JSON and parsing
+					let jsonContents = base64ToString(fileContents);
+					let jsonGameData = JSON.parse(jsonContents);
+					if (jsonGameData) {
+						value = fileContents;
+						success = true;
+					}
+				} catch {
+					success = false;
+				}
 			}
+		}
+
+		// TODO: provide feedback directly to user via the interface
+		if (success) {
+			console.log('Desert Bus for Hope game successfully loaded');
+		} else {
+			console.log('Error loading file: Not a Desert Bus for Hope game');
 		}
 	}
 
