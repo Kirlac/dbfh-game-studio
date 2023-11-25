@@ -66,8 +66,13 @@
 	}
 
 	function uploadGame(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		console.log(event.currentTarget.files);
 		if (event.currentTarget.files?.[0]) {
 			parseGameFile(event.currentTarget.files[0]);
+			// Clear file list so the same file can be uploaded again if it gets discarded
+			// Without this the change event does not fire because the file is already in the list
+			let dt = new DataTransfer();
+			event.currentTarget.files = dt.files;
 		}
 	}
 
