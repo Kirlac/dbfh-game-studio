@@ -86,7 +86,7 @@
 {#if !isHome && !isPlayer}
 	<a
 		title="Home"
-		class="bg-transparent fixed left-0 top-0 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
+		class="bg-transparent fixed left-0 top-0 z-30 m-6 flex h-12 w-12 items-center justify-center rounded-full text-theme-secondary-dark hover:bg-theme-secondary-dark hover:text-theme-secondary-light"
 		href="/"
 	>
 		<Icon name="circle-arrow-left" class="text-4xl"></Icon>
