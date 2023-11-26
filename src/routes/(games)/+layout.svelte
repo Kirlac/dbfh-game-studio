@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { gameData } from '$lib/stores/gameData.store';
+	import { gameData, gameDataBase64 } from '$lib/stores/gameData.store';
 	import GameCode from '$lib/components/GameCode.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { goto } from '$app/navigation';
@@ -46,6 +46,17 @@
 						>Play Game</span
 					>
 				</button>
+			</li>
+			<li>
+				<a
+					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					href="data:text/plain;charset=utf-8,{$gameDataBase64}"
+					download="{$gameData?.gameType}.dbfhg"
+				>
+					<Icon name="floppy-disk" class="text-theme-neutral-dark"></Icon><span class="ml-2"
+						>Download Game</span
+					>
+				</a>
 			</li>
 			<li>
 				<button
@@ -94,7 +105,7 @@
 		{/if}
 
 		{#if codeVisible}
-			<GameCode showPlayButton showDiscardButton showUploadButton showCopyButton></GameCode>
+			<GameCode showDiscardButton showUploadButton showCopyButton></GameCode>
 		{/if}
 	</section>
 
