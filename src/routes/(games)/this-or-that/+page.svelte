@@ -1,78 +1,198 @@
 <script lang="ts">
+	import Icon from '$lib/components/Icon.svelte';
 	import { gameData } from '$lib/stores/gameData.store';
+
+	function addNewHint(questionIndex: number): any {
+		if ($gameData) {
+			$gameData.questions[questionIndex].hintText = [
+				...($gameData.questions[questionIndex].hintText || []),
+				''
+			];
+		}
+	}
+
+	function removeHint(questionIndex: number, hintIndex: number): any {
+		if ($gameData) {
+			$gameData.questions[questionIndex].hintText = $gameData.questions[
+				questionIndex
+			].hintText?.toSpliced(hintIndex, 1);
+		}
+	}
+
+	function addNewAnswer(questionIndex: number): any {
+		if ($gameData) {
+			$gameData.questions[questionIndex].answerOptions = [
+				...($gameData.questions[questionIndex].answerOptions || []),
+				{}
+			];
+		}
+	}
+
+	function removeAnswer(questionIndex: number, answerIndex: number): any {
+		if ($gameData) {
+			$gameData.questions[questionIndex].answerOptions = $gameData.questions[
+				questionIndex
+			].answerOptions.toSpliced(answerIndex, 1);
+
+			if ($gameData.questions[questionIndex].correctAnswerIndex >= answerIndex) {
+				setCorrectAnswer(questionIndex, $gameData.questions[questionIndex].correctAnswerIndex - 1);
+			}
+		}
+	}
+
+	function setCorrectAnswer(questionIndex: number, answerIndex: number): any {
+		if ($gameData) {
+			$gameData.questions[questionIndex].correctAnswerIndex = answerIndex;
+		}
+	}
 </script>
 
 {#if $gameData}
-	<form class="my-4 inline-block w-3/4">
+	<div class="my-4 inline-block w-3/4">
 		<section class="grid grid-cols-1 gap-4 text-left">
 			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Title Card</h2>
 			<div class="block">
-				<label for="title" class="m-2 p-2 text-theme-neutral-light">Game Title</label>
+				<label for="title" class="text-theme-neutral-light">Game Title</label>
 				<input
 					id="title"
 					name="title"
 					type="text"
-					class="m-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-					value={$gameData.titleCard?.gameTitle}
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					bind:value={$gameData.titleCard.gameTitle}
 				/>
 			</div>
 			<div class="block">
-				<label for="description" class="m-2 p-2 text-theme-neutral-light">Game Description</label>
+				<label for="description" class="text-theme-neutral-light">Game Description</label>
 				<textarea
 					id="description"
 					name="description"
-					class="m-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-					value={$gameData.titleCard?.gameDescription}
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					bind:value={$gameData.titleCard.gameDescription}
 				/>
 			</div>
 			<div class="block">
-				<label for="title-image" class="m-2 p-2 text-theme-neutral-light">Title Card Image</label>
+				<label for="title-image" class="text-theme-neutral-light">Title Card Image</label>
 				<input
 					id="title-image"
 					name="title-image"
 					type="text"
 					disabled={true}
-					class="m-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					value="TODO: Implement image processing"
 				/>
+				{#if $gameData.titleCard.titleImage}
+					<div class="text-center">
+						<img
+							alt="Title card graphic"
+							class="inline-block w-1/2"
+							src={$gameData.titleCard.titleImage}
+						/>
+					</div>
+				{/if}
 			</div>
 		</section>
 		<section class="grid grid-cols-1 gap-4 text-left">
 			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
-			{#each $gameData.questions || [{}] as question, i}
+			{#each $gameData.questions || [{}] as question, questionIndex}
 				<div class="block">
-					<label for="question-{i + 1}-text" class="m-2 p-2 text-theme-neutral-light"
-						>Question #{i + 1}</label
+					<label for="question-{questionIndex + 1}-text" class="text-theme-neutral-light"
+						>Question #{questionIndex + 1}</label
 					>
 					<input
-						id="question-{i + 1}-text"
-						name="question-{i + 1}-text"
+						id="question-{questionIndex + 1}-text"
+						name="question-{questionIndex + 1}-text"
 						type="text"
-						class="m-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-						value={$gameData.questions?.[i].questionText}
+						class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+						bind:value={question.questionText}
 					/>
 				</div>
 				<div class="block">
-					<label for="question-{i + 1}-image" class="m-2 p-2 text-theme-neutral-light"
-						>Image #{i + 1}</label
+					<label for="question-{questionIndex + 1}-image" class="text-theme-neutral-light"
+						>Image #{questionIndex + 1}</label
 					>
 					<input
-						id="question-{i + 1}-image"
-						name="question-{i + 1}-image"
+						id="question-{questionIndex + 1}-image"
+						name="question-{questionIndex + 1}-image"
 						type="text"
 						disabled={true}
-						class="m-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+						class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						value="TODO: Implement image processing"
 					/>
 					<div class="text-center">
 						<img
-							alt="Question {i + 1} image"
+							alt="Question #{questionIndex + 1} accompanying image"
 							class="inline-block w-1/2"
-							src={$gameData.questions?.[i].questionImage}
+							src={question.questionImage}
 						/>
 					</div>
 				</div>
+				<div class="block">
+					<label for="question-{questionIndex + 1}-hint-text">Hints</label>
+					{#each question.hintText || [] as hint, hintIndex}
+						<div class="flex justify-stretch">
+							<input
+								id="question-{questionIndex + 1}-hint-{hintIndex + 1}-text"
+								name="question-{questionIndex + 1}-hint-text"
+								type="text"
+								class="my-2 inline-block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								bind:value={hint}
+							/>
+							<button
+								class="my-2 ml-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								on:click={() => removeHint(questionIndex, hintIndex)}
+								><Icon name="trash-can" class="text-theme-status-error"></Icon><span
+									class="ml-2 text-theme-neutral-dark">Remove</span
+								></button
+							>
+						</div>
+					{/each}
+					<button
+						class="my-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={() => addNewHint(questionIndex)}
+						><Icon name="file-lines" class="text-theme-accent-dark"></Icon><span
+							class="ml-2 text-theme-neutral-dark">Add New Hint</span
+						></button
+					>
+				</div>
+				<div class="block">
+					<label for="question-{questionIndex + 1}-answer-text">Answer Options</label>
+					{#each question.answerOptions || [] as answer, answerIndex}
+						<div class="flex justify-stretch">
+							<button
+								class="my-2 mr-2 flex w-12 items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								on:click={() => setCorrectAnswer(questionIndex, answerIndex)}
+								><Icon
+									name={question.correctAnswerIndex === answerIndex ? 'check' : 'xmark'}
+									class={question.correctAnswerIndex === answerIndex
+										? 'text-theme-status-success'
+										: 'text-theme-status-error'}
+								></Icon></button
+							>
+							<input
+								id="question-{questionIndex + 1}-answer-{answerIndex + 1}-text"
+								name="question-{questionIndex + 1}-answer-text"
+								type="text"
+								class="my-2 inline-block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								bind:value={answer.answerText}
+							/>
+							<button
+								class="my-2 ml-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								on:click={() => removeAnswer(questionIndex, answerIndex)}
+								><Icon name="trash-can" class="text-theme-status-error"></Icon><span
+									class="ml-2 text-theme-neutral-dark">Remove</span
+								></button
+							>
+						</div>
+					{/each}
+					<button
+						class="my-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={() => addNewAnswer(questionIndex)}
+						><Icon name="file-lines" class="text-theme-accent-dark"></Icon><span
+							class="ml-2 text-theme-neutral-dark">Add New Answer</span
+						></button
+					>
+				</div>
 			{/each}
 		</section>
-	</form>
+	</div>
 {/if}
