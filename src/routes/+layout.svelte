@@ -56,20 +56,25 @@
 	}
 
 	function handleKeyPress(event: KeyboardEvent & { currentTarget: EventTarget & Window }) {
-		if (infoCentreOpen || event.key === 'i') {
-			// Assume key presses are intended for the Info Centre and nowhere else
-			switch (event.key) {
-				case 'i':
-					toggleInfoCentre();
-					break;
-				case 'Escape':
-					closeInfoCentre();
-				default:
-					break;
+		let target = event.target as EventTarget & HTMLElement;
+		if (target.tagName !== 'INPUT') {
+			// Only handle key presses when they aren't initiated from an input
+			// Eg. when typing into a text box we don't want to open the Info Centre
+			if (infoCentreOpen || event.key === 'i') {
+				// Assume key presses are intended for the Info Centre and nowhere else
+				switch (event.key) {
+					case 'i':
+						toggleInfoCentre();
+						break;
+					case 'Escape':
+						closeInfoCentre();
+					default:
+						break;
+				}
+			} else {
+				// Propagate key press so other components can take action
+				$keyPressEvent = event;
 			}
-		} else {
-			// Propagate key press so other components can take action
-			$keyPressEvent = event;
 		}
 	}
 </script>
