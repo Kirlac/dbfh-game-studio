@@ -4,9 +4,41 @@
 	import GameCode from '$lib/components/GameCode.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { goto } from '$app/navigation';
+	import { onMount } from 'svelte';
 
 	function playGame() {
 		goto('/play', { replaceState: false });
+	}
+
+	let discardConfirmationRequested = false;
+	let invalidGameType = false;
+	function createNewGame() {
+		invalidGameType = false;
+		discardConfirmationRequested = false;
+		$gameData = $page.data.defaultGameData;
+	}
+
+	function confirmDiscardGame() {
+		if ($gameData) {
+			discardConfirmationRequested = true;
+		} else {
+			createNewGame();
+		}
+	}
+
+	function cancelDiscardGame() {
+		invalidGameType = false;
+		discardConfirmationRequested = false;
+	}
+
+	function reloadGameInCorrectEditor() {
+		invalidGameType = false;
+		discardConfirmationRequested = false;
+		if ($gameData?.gameType) {
+			goto(`/${$gameData?.gameType}`, { replaceState: false });
+		} else {
+			goto('/', { replaceState: false });
+		}
 	}
 
 	async function loadExample() {
@@ -25,6 +57,16 @@
 	function toggleCodeVisibility() {
 		codeVisible = !codeVisible;
 	}
+
+	onMount(() => {
+		if ($gameData) {
+			if ($gameData?.gameType !== $page.data.defaultGameData.gameType) {
+				invalidGameType = true;
+			}
+		} else {
+			createNewGame();
+		}
+	});
 </script>
 
 <header class="flex flex-col items-center justify-around text-center">
@@ -61,6 +103,7 @@
 			<li>
 				<button
 					class="flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					on:click={confirmDiscardGame}
 				>
 					<Icon name="file" class="text-theme-neutral-dark"></Icon><span class="ml-2">New Game</span
 					>
@@ -108,6 +151,56 @@
 			<GameCode showDiscardButton showUploadButton showCopyButton></GameCode>
 		{/if}
 	</section>
+
+	{#if discardConfirmationRequested || invalidGameType}
+		<section
+			class="fixed bottom-0 left-0 right-0 top-0 flex items-start justify-around bg-stone-800/40"
+		>
+			<div
+				class="my-16 inline-block w-3/4 rounded-md bg-theme-neutral-light p-8 text-theme-neutral-dark"
+			>
+				<h2 class="my-2 text-center text-xl text-theme-status-error">
+					WARNING:
+					{#if invalidGameType}
+						The game you have loaded is a different type
+					{:else}
+						Your game will be discarded
+					{/if}
+				</h2>
+				<p class="my-2">
+					Are you sure you wish to discard existing game data and create a new game?
+				</p>
+				<p class="my-2">
+					Discarded data cannot be retrieved.
+					{#if invalidGameType}
+						If you want to change to the correct editor for this game type, select "Reload in the
+						Correct Editor" to reload the game in a different editor.
+					{:else}
+						If you are unsure, you can select "Keep Existing Game" to return to the editor and
+						download a copy as a backup.
+					{/if}
+				</p>
+				<div class="mt-8 flex items-center justify-evenly">
+					<button
+						class="rounded-md bg-stone-100 p-2 text-theme-status-error ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={createNewGame}>Discard and Create New Game</button
+					>
+					{#if invalidGameType}
+						<button
+							class="rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+							on:click={reloadGameInCorrectEditor}>Reload in the Correct Editor</button
+						>
+					{/if}
+					{#if discardConfirmationRequested}
+						<button
+							class="rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+							on:click={cancelDiscardGame}>Keep Existing Game</button
+						>
+					{/if}
+				</div>
+			</div>
+		</section>
+	{/if}
 
 	<slot />
 </main>
