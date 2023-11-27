@@ -3,6 +3,17 @@
 	import { gameData } from '$lib/stores/gameData.store';
 	import { defaultAnswer, defaultHint, defaultQuestion } from './defaultGameData';
 
+	function addNewQuestion() {
+		if ($gameData) {
+			$gameData.questions = [...$gameData.questions, defaultQuestion];
+		}
+	}
+
+	function removeQuestion(questionIndex: number) {
+		if ($gameData) {
+			$gameData.questions = $gameData.questions.toSpliced(questionIndex, 1);
+		}
+	}
 
 	function addNewHint(questionIndex: number): any {
 		if ($gameData) {
