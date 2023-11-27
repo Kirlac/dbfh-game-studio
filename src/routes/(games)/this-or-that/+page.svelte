@@ -194,5 +194,47 @@
 				</div>
 			{/each}
 		</section>
+		<section class="grid grid-cols-1 gap-4 text-left">
+			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">End Card</h2>
+			<div class="block">
+				<label for="end-heading" class="text-theme-neutral-light">End Card Heading</label>
+				<input
+					id="end-heading"
+					name="end-heading"
+					type="text"
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					bind:value={$gameData.endCard.endHeading}
+				/>
+			</div>
+			<div class="block">
+				<label for="end-text" class="text-theme-neutral-light">End Card Text</label>
+				<textarea
+					id="end-text"
+					name="end-text"
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					bind:value={$gameData.endCard.endText}
+				/>
+			</div>
+			<div class="block">
+				<label for="title-image" class="text-theme-neutral-light">End Card Image</label>
+				<input
+					id="title-image"
+					name="title-image"
+					type="text"
+					disabled={true}
+					class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					value="TODO: Implement image processing"
+				/>
+				{#if $gameData.endCard.endImage}
+					<div class="text-center">
+						<img
+							alt="Title card graphic"
+							class="inline-block w-1/2"
+							src={$gameData.endCard.endImage}
+						/>
+					</div>
+				{/if}
+			</div>
+		</section>
 	</div>
 {/if}
