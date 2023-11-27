@@ -12,16 +12,16 @@ export type GameData = {
 	endCard: EndCard;
 };
 
-export interface TitleCard {
+export type TitleCard = {
 	// Game name for the title card eg. 'Crab or No Crab'
 	gameTitle?: string;
 	// Descriptive text for the title card eg. 'For each image, guess whether or not it is a crab'
 	gameDescription?: string;
 	//Base64 image to show on the title card
 	titleImage?: string;
-}
+};
 
-export interface Question {
+export type Question = {
 	// Main display text for the question eg. 'Is this a crab'
 	questionText?: string;
 	// Base64 image to display for the question eg. a cropped/zoomed in image of a crab
@@ -32,16 +32,16 @@ export interface Question {
 	answerOptions: Answer[];
 	// Array index for the correct answer eg. 0
 	correctAnswerIndex: number;
-}
+};
 
-export interface Answer {
+export type Answer = {
 	// Main display text for the answer eg. 'Crab'
 	answerText?: string;
 	// Base64 image to display for the answer eg. the full uncropped/zoomed out image of the crab
 	answerImage?: string;
 	// Descriptive text for providing additional context eg. 'This is a rave crab from a popular music video'
 	answerDescription?: string;
-}
+};
 
 export interface EndCard {
 	// Heading to display on the end card eg. 'Thanks for Playing!'

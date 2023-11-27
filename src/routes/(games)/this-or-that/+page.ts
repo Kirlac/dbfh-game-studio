@@ -1,14 +1,10 @@
 import Instructions from './Instructions.svelte';
+import { defaultGameData } from './defaultGameData';
 
 export function load() {
 	return {
 		title: 'This or That',
-		defaultGameData: {
-			gameType: 'this-or-that',
-			titleCard: {},
-			questions: [],
-			endCard: {}
-		},
+		defaultGameData,
 		instructions: Instructions
 	};
 }
