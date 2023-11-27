@@ -12,10 +12,12 @@ export const defaultAnswer: Answer = {
 	answerImage: ''
 };
 
+export const defaultHint = '';
+
 export const defaultQuestion: Question = {
 	questionText: '',
 	questionImage: '',
-	hintText: [''],
+	hintText: [defaultHint],
 	answerOptions: [defaultAnswer],
 	correctAnswerIndex: 0
 };

@@ -1,6 +1,8 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { gameData } from '$lib/stores/gameData.store';
+	import { defaultAnswer, defaultHint, defaultQuestion } from './defaultGameData';
+
 
 	function addNewHint(questionIndex: number): any {
 		if ($gameData) {
@@ -23,7 +25,7 @@
 		if ($gameData) {
 			$gameData.questions[questionIndex].answerOptions = [
 				...($gameData.questions[questionIndex].answerOptions || []),
-				{}
+				defaultAnswer
 			];
 		}
 	}
@@ -93,7 +95,7 @@
 		</section>
 		<section class="grid grid-cols-1 gap-4 text-left">
 			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
-			{#each $gameData.questions || [{}] as question, questionIndex}
+			{#each $gameData.questions || [defaultQuestion] as question, questionIndex}
 				<div class="block">
 					<label for="question-{questionIndex + 1}-text" class="text-theme-neutral-light"
 						>Question #{questionIndex + 1}</label
@@ -130,7 +132,7 @@
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-hint-text">Hints</label>
-					{#each question.hintText || [] as hint, hintIndex}
+					{#each question.hintText || [defaultHint] as hint, hintIndex}
 						<div class="flex justify-stretch">
 							<input
 								id="question-{questionIndex + 1}-hint-{hintIndex + 1}-text"
@@ -158,7 +160,7 @@
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-answer-text">Answer Options</label>
-					{#each question.answerOptions || [] as answer, answerIndex}
+					{#each question.answerOptions || [defaultAnswer] as answer, answerIndex}
 						<div class="flex justify-stretch">
 							<button
 								class="my-2 mr-2 flex w-12 items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
