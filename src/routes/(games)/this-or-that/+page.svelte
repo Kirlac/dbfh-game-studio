@@ -118,13 +118,15 @@
 						class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 						value="TODO: Implement image processing"
 					/>
-					<div class="text-center">
-						<img
-							alt="Question #{questionIndex + 1} accompanying image"
-							class="inline-block w-1/2"
-							src={question.questionImage}
-						/>
-					</div>
+					{#if question.questionImage}
+						<div class="text-center">
+							<img
+								alt="Question #{questionIndex + 1} accompanying image"
+								class="inline-block w-1/2"
+								src={question.questionImage}
+							/>
+						</div>
+					{/if}
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-hint-text">Hints</label>
