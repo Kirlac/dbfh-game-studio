@@ -62,8 +62,8 @@
 
 {#if $gameData}
 	<div class="my-4 inline-block w-3/4">
+		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Title Card</h2>
 		<section class="grid grid-cols-1 gap-4 text-left">
-			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Title Card</h2>
 			<div class="block">
 				<label for="title" class="text-theme-neutral-light">Game Title</label>
 				<input
@@ -104,12 +104,17 @@
 				{/if}
 			</div>
 		</section>
-		<section class="grid grid-cols-1 gap-4 text-left">
-			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
-			{#each $gameData.questions || [defaultQuestion] as question, questionIndex}
+		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
+		{#each $gameData.questions || [defaultQuestion] as question, questionIndex}
+			<section
+				class="my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+			>
+				<h3 class="mt-2 text-center text-xl text-theme-accent-light">
+					Question #{questionIndex + 1}
+				</h3>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-text" class="text-theme-neutral-light"
-						>Question #{questionIndex + 1}</label
+						>Question Text</label
 					>
 					<input
 						id="question-{questionIndex + 1}-text"
@@ -121,7 +126,7 @@
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-image" class="text-theme-neutral-light"
-						>Image #{questionIndex + 1}</label
+						>Question Image</label
 					>
 					<input
 						id="question-{questionIndex + 1}-image"
@@ -207,7 +212,20 @@
 						></button
 					>
 				</div>
-			{/each}
+			</section>
+		{/each}
+		<section
+			class="my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+		>
+			<div class="block text-center">
+				<button
+					class="my-2 ml-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					on:click={addNewQuestion}
+					><Icon name="plus" class="text-theme-accent-dark"></Icon><span
+						class="ml-2 text-theme-neutral-dark">Add New Question</span
+					></button
+				>
+			</div>
 		</section>
 		<section class="grid grid-cols-1 gap-4 text-left">
 			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">End Card</h2>
