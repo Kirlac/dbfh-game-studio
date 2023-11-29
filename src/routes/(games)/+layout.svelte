@@ -77,7 +77,7 @@
 </header>
 
 <main class="text-center">
-	<section class="sticky top-8">
+	<section class="sticky top-0 z-20 bg-theme-primary-dark pt-8">
 		<menu class="mb-4 inline-flex w-3/4 items-center justify-around">
 			<li>
 				<button
@@ -154,7 +154,7 @@
 
 	{#if discardConfirmationRequested || invalidGameType}
 		<section
-			class="fixed bottom-0 left-0 right-0 top-0 flex items-start justify-around bg-stone-800/40"
+			class="fixed bottom-0 left-0 right-0 top-0 z-30 flex items-start justify-around bg-stone-800/40"
 		>
 			<div
 				class="my-16 inline-block w-3/4 rounded-md bg-theme-neutral-light p-8 text-theme-neutral-dark"
