@@ -63,7 +63,9 @@
 {#if $gameData}
 	<div class="my-4 inline-block w-3/4">
 		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Title Card</h2>
-		<section class="grid grid-cols-1 gap-4 text-left">
+		<section
+			class="my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+		>
 			<div class="block">
 				<label for="title" class="text-theme-neutral-light">Game Title</label>
 				<input
@@ -227,8 +229,10 @@
 				>
 			</div>
 		</section>
-		<section class="grid grid-cols-1 gap-4 text-left">
-			<h2 class="mt-6 text-center text-3xl text-theme-accent-light">End Card</h2>
+		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">End Card</h2>
+		<section
+			class="my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+		>
 			<div class="block">
 				<label for="end-heading" class="text-theme-neutral-light">End Card Heading</label>
 				<input
