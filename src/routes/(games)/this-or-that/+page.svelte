@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
 	import { gameData } from '$lib/stores/gameData.store';
+	import { fade } from 'svelte/transition';
 	import { defaultAnswer, defaultHint, defaultQuestion } from './defaultGameData';
 
 	function addNewQuestion() {
@@ -109,11 +110,21 @@
 		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
 		{#each $gameData.questions || [defaultQuestion] as question, questionIndex}
 			<section
-				class="my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+				class="relative z-10 my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
+				transition:fade
 			>
 				<h3 class="mt-2 text-center text-xl text-theme-accent-light">
 					Question #{questionIndex + 1}
 				</h3>
+				<div class="absolute right-0 top-0 block text-center">
+					<button
+						class="m-4 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+						on:click={() => removeQuestion(questionIndex)}
+						><Icon name="trash-can" class="text-theme-status-error"></Icon><span
+							class="ml-2 text-theme-neutral-dark">Remove Question</span
+						></button
+					>
+				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-text" class="text-theme-neutral-light"
 						>Question Text</label
@@ -151,7 +162,7 @@
 				<div class="block">
 					<label for="question-{questionIndex + 1}-hint-text">Hints</label>
 					{#each question.hintText || [defaultHint] as hint, hintIndex}
-						<div class="flex justify-stretch">
+						<div class="flex justify-stretch" transition:fade>
 							<input
 								id="question-{questionIndex + 1}-hint-{hintIndex + 1}-text"
 								name="question-{questionIndex + 1}-hint-text"
@@ -179,7 +190,7 @@
 				<div class="block">
 					<label for="question-{questionIndex + 1}-answer-text">Answer Options</label>
 					{#each question.answerOptions || [defaultAnswer] as answer, answerIndex}
-						<div class="flex justify-stretch">
+						<div class="flex justify-stretch" transition:fade>
 							<button
 								class="my-2 mr-2 flex w-12 items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 								on:click={() => setCorrectAnswer(questionIndex, answerIndex)}
@@ -221,7 +232,7 @@
 		>
 			<div class="block text-center">
 				<button
-					class="my-2 ml-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+					class="m-2 inline-flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 					on:click={addNewQuestion}
 					><Icon name="plus" class="text-theme-accent-dark"></Icon><span
 						class="ml-2 text-theme-neutral-dark">Add New Question</span
