@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { gameData, gameDataBase64 } from '$lib/stores/gameData.store';
+	import { gameData, gameDataBase64, type GameData } from '$lib/stores/gameData.store';
 	import GameCode from '$lib/components/GameCode.svelte';
 	import Icon from '$lib/components/Icon.svelte';
 	import { goto } from '$app/navigation';
@@ -15,7 +15,13 @@
 	function createNewGame() {
 		invalidGameType = false;
 		discardConfirmationRequested = false;
-		$gameData = $page.data.defaultGameData;
+		let newGame: GameData = {
+			gameType: $page.data.gameType,
+			titleCard: {},
+			questions: [],
+			endCard: {}
+		};
+		$gameData = newGame;
 	}
 
 	function confirmDiscardGame() {
@@ -42,7 +48,7 @@
 	}
 
 	async function loadExample() {
-		const exampleResponse = await fetch(`${$page.data.defaultGameData.gameType}-example.dbfhg`);
+		const exampleResponse = await fetch(`${$page.data.gameType}-example.dbfhg`);
 		let exampleGameCode = await exampleResponse.text();
 		gameData.setBase64(exampleGameCode);
 	}
@@ -60,7 +66,7 @@
 
 	onMount(() => {
 		if ($gameData) {
-			if ($gameData?.gameType !== $page.data.defaultGameData.gameType) {
+			if ($gameData?.gameType !== $page.data.gameType) {
 				invalidGameType = true;
 			}
 		} else {

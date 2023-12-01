@@ -1,5 +1,3 @@
-import type { GameData } from '$lib/stores/gameData.store';
-
 // See https://kit.svelte.dev/docs/types#app
 // for information about these interfaces
 declare global {
@@ -8,7 +6,7 @@ declare global {
 		// interface Locals {}
 		interface PageData {
 			title: string;
-			defaultGameData: GameData;
+			gameType: 'this-or-that' | 'only-connect' | 'millionaire' | 'guess-the-thing' | 'silhouette';
 			instructions: ConstructorOfATypedSvelteComponent;
 		}
 		// interface Platform {}
