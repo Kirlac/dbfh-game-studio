@@ -1,9 +1,46 @@
 <script lang="ts">
 	import GameCode from '$lib/components/GameCode.svelte';
+	import { userConfig } from '$lib/stores/userConfig.store';
 </script>
 
 <header class="flex flex-col items-center justify-around text-center">
-	<img src="logo-2024-trans-200.png" alt="Desert Bus for Hope" class="inline-block w-[200px]" />
+	{#if $userConfig.selectedTheme === 'dawn-guard'}
+		<img
+			src="dawn-guard.png"
+			alt="Desert Bus for Hope - Dawn Guard Banner"
+			class="inline-block w-[200px]"
+		/>
+	{:else if $userConfig.selectedTheme === 'alpha-flight'}
+		<img
+			src="alpha-flight.png"
+			alt="Desert Bus for Hope - Alpha Flight Banner"
+			class="inline-block w-[200px]"
+		/>
+	{:else if $userConfig.selectedTheme === 'night-watch'}
+		<img
+			src="night-watch.png"
+			alt="Desert Bus for Hope - Night Watch Banner"
+			class="inline-block w-[200px]"
+		/>
+	{:else if $userConfig.selectedTheme === 'zeta-shift'}
+		<img
+			src="zeta-shift.png"
+			alt="Desert Bus for Hope - Zeta Shift Banner"
+			class="inline-block w-[200px]"
+		/>
+	{:else if $userConfig.selectedTheme === 'omega-shift'}
+		<img
+			src="omega-shift.png"
+			alt="Desert Bus for Hope - Omega Shift Banner"
+			class="inline-block w-[200px]"
+		/>
+	{:else}
+		<img
+			src="logo-2024-trans-200.png"
+			alt="Desert Bus for Hope 2024 Logo"
+			class="inline-block w-[200px]"
+		/>
+	{/if}
 	<h1 class="m-4 inline-block text-4xl text-theme-accent-light">
 		The Desert Bus for Hope Game Studio
 	</h1>
