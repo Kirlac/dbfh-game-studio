@@ -8,7 +8,9 @@ This project exists as an attempt to create a unified solution designed with sol
 
 The application currently has a functional framework providing the application layout as well as a set of different themes: a Desert Bus theme based on the [Desert Bus website](https://desertbus.org) and five themes based on each of the Desert Bus shift banners (Dawn Guard, Alpha Flight, Night Watch, Zeta Shift and Omega Shift).
 
-No game editors are currently implemented. The "This or That" editor is a work in progress and the others only have an empty placeholder page. There is a placeholder page for the game player, but it has no functionality and just displays the JSON representation of a placeholder game.
+An Information Centre can be accessed by clicking the (?) button in the top right, or by pressing the 'i' key on your keyboard. This will provide help and configuration for the application and includes settings with a theme selector and the option to toggle cursive italic code fonts (for extra fanciness), a list of all currently implemented keyboard shortcuts, some example games to copy or download and a credits section with contact information.
+
+The "This or That" game editor is a work in progress but is nearing completion. The other games only have an empty placeholder page at this time. There is a placeholder page for the game player, but it has no functionality and just displays the JSON representation of the currently loaded game.
 
 ## Technology
 
