@@ -203,32 +203,71 @@
 				<div class="block">
 					<label for="question-{questionIndex + 1}-answer-text">Answer Options</label>
 					{#each question.answerOptions || [] as answer, answerIndex (answer.answerId)}
-						<div class="flex justify-stretch" transition:fade>
-							<button
-								class="my-2 mr-2 flex w-12 items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-								on:click={() => setCorrectAnswer(questionIndex, answerIndex)}
-								><Icon
-									name={question.correctAnswerIndex === answerIndex ? 'check' : 'xmark'}
-									class={question.correctAnswerIndex === answerIndex
-										? 'text-theme-status-success'
-										: 'text-theme-status-error'}
-								></Icon></button
+						<section class="my-4 rounded-md p-2 ring-2 ring-theme-accent-light" transition:fade>
+							<div class="flex justify-between">
+								<button
+									class="my-2 mr-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+									on:click={() => setCorrectAnswer(questionIndex, answerIndex)}
+									><Icon
+										name={question.correctAnswerIndex === answerIndex ? 'check' : 'xmark'}
+										class={question.correctAnswerIndex === answerIndex
+											? 'text-theme-status-success'
+											: 'text-theme-status-error'}
+									></Icon><span class="ml-2 text-theme-neutral-dark"
+										>{question.correctAnswerIndex === answerIndex ? 'Correct' : 'Incorrect'}</span
+									></button
+								>
+								<h4 class="mt-2 text-center text-xl text-theme-accent-light">
+									Answer #{answerIndex + 1}
+								</h4>
+								<button
+									class="my-2 ml-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+									on:click={() => removeAnswer(questionIndex, answerIndex)}
+									><Icon name="trash-can" class="text-theme-status-error"></Icon><span
+										class="ml-2 text-theme-neutral-dark">Remove</span
+									></button
+								>
+							</div>
+							<label for="question-{questionIndex + 1}-answer-{answerIndex + 1}-text"
+								>Answer Text</label
 							>
 							<input
 								id="question-{questionIndex + 1}-answer-{answerIndex + 1}-text"
-								name="question-{questionIndex + 1}-answer-text"
+								name="question-{questionIndex + 1}-answer-{answerIndex + 1}-text"
 								type="text"
 								class="my-2 inline-block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
 								bind:value={answer.answerText}
 							/>
-							<button
-								class="my-2 ml-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
-								on:click={() => removeAnswer(questionIndex, answerIndex)}
-								><Icon name="trash-can" class="text-theme-status-error"></Icon><span
-									class="ml-2 text-theme-neutral-dark">Remove</span
-								></button
+							<label for="question-{questionIndex + 1}-answer-{answerIndex + 1}-image"
+								>Answer Image</label
 							>
-						</div>
+							<input
+								id="question-{questionIndex + 1}-answer-{answerIndex + 1}-image"
+								name="question-{questionIndex + 1}-answer-{answerIndex + 1}-image"
+								type="text"
+								disabled={true}
+								class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								value="TODO: Implement image processing"
+							/>
+							{#if answer.answerImage}
+								<div class="text-center">
+									<img
+										alt="Answer #{answerIndex + 1} image"
+										class="inline-block w-1/2"
+										src={answer.answerImage}
+									/>
+								</div>
+							{/if}
+							<label for="question-{questionIndex + 1}-answer-{answerIndex + 1}-description"
+								>Answer Description (will show on results screen if this answer is selected)</label
+							>
+							<textarea
+								id="question-{questionIndex + 1}-answer-{answerIndex + 1}-description"
+								name="question-{questionIndex + 1}-answer-{answerIndex + 1}-description"
+								class="my-2 block w-full rounded-md bg-stone-100 p-2 text-theme-neutral-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
+								>{answer.answerDescription}</textarea
+							>
+						</section>
 					{/each}
 					<button
 						class="my-2 flex items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
