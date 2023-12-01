@@ -22,6 +22,7 @@ export type TitleCard = {
 };
 
 export type Question = {
+	questionId: number;
 	// Main display text for the question eg. 'Is this a crab'
 	questionText?: string;
 	// Base64 image to display for the question eg. a cropped/zoomed in image of a crab
@@ -35,6 +36,7 @@ export type Question = {
 };
 
 export type Answer = {
+	answerId: number;
 	// Main display text for the answer eg. 'Crab'
 	answerText?: string;
 	// Base64 image to display for the answer eg. the full uncropped/zoomed out image of the crab

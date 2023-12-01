@@ -1,12 +1,19 @@
 <script lang="ts">
 	import Icon from '$lib/components/Icon.svelte';
-	import { gameData } from '$lib/stores/gameData.store';
+	import { gameData, type Answer, type Question } from '$lib/stores/gameData.store';
 	import { fade } from 'svelte/transition';
-	import { defaultAnswer, defaultHint, defaultQuestion } from './defaultGameData';
 
 	function addNewQuestion() {
 		if ($gameData) {
-			$gameData.questions = [...$gameData.questions, defaultQuestion];
+			let newQuestion: Question = {
+				questionId: new Date().getTime(),
+				questionText: '',
+				questionImage: '',
+				hintText: [],
+				answerOptions: [],
+				correctAnswerIndex: 0
+			};
+			$gameData.questions = [...$gameData.questions, newQuestion];
 		}
 	}
 
@@ -35,9 +42,15 @@
 
 	function addNewAnswer(questionIndex: number): any {
 		if ($gameData) {
+			let newAnswer: Answer = {
+				answerId: new Date().getTime(),
+				answerText: '',
+				answerDescription: '',
+				answerImage: ''
+			};
 			$gameData.questions[questionIndex].answerOptions = [
 				...($gameData.questions[questionIndex].answerOptions || []),
-				defaultAnswer
+				newAnswer
 			];
 		}
 	}
@@ -108,7 +121,7 @@
 			</div>
 		</section>
 		<h2 class="mt-6 text-center text-3xl text-theme-accent-light">Questions</h2>
-		{#each $gameData.questions || [defaultQuestion] as question, questionIndex}
+		{#each $gameData.questions || [] as question, questionIndex (question.questionId)}
 			<section
 				class="relative z-10 my-4 grid grid-cols-1 gap-4 rounded-md bg-theme-primary-light p-4 text-left ring-2 ring-theme-accent-light"
 				transition:fade
@@ -161,7 +174,7 @@
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-hint-text">Hints</label>
-					{#each question.hintText || [defaultHint] as hint, hintIndex}
+					{#each question.hintText || [] as hint, hintIndex}
 						<div class="flex justify-stretch" transition:fade>
 							<input
 								id="question-{questionIndex + 1}-hint-{hintIndex + 1}-text"
@@ -189,7 +202,7 @@
 				</div>
 				<div class="block">
 					<label for="question-{questionIndex + 1}-answer-text">Answer Options</label>
-					{#each question.answerOptions || [defaultAnswer] as answer, answerIndex}
+					{#each question.answerOptions || [] as answer, answerIndex (answer.answerId)}
 						<div class="flex justify-stretch" transition:fade>
 							<button
 								class="my-2 mr-2 flex w-12 items-center justify-center rounded-md bg-stone-100 p-2 text-theme-accent-dark ring-1 ring-stone-900/10 hover:bg-stone-200"
